@@ -1,16 +1,123 @@
-[gd_scene load_steps=2 format=3 uid="uid://cn3yvyxcm8dnk"]
+[gd_scene load_steps=14 format=4 uid="uid://cn3yvyxcm8dnk"]
+
+[ext_resource type="Texture2D" uid="uid://dmhs28ewqpes" path="res://Assets/Textures/player.png" id="1_s0q0j"]
+[ext_resource type="Script" uid="uid://wh6aieip2y42" path="res://Scripts/PlayerController.gd" id="2_eidl8"]
+[ext_resource type="Texture2D" uid="uid://cxnim1ki8wh04" path="res://Assets/Textures/Lab Tilemap.png" id="3_fcr1k"]
+
+[sub_resource type="Gradient" id="Gradient_eidl8"]
+offsets = PackedFloat32Array(0, 0.506494, 1)
+colors = PackedColorArray(1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fcr1k"]
+gradient = SubResource("Gradient_eidl8")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eidl8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_s0q0j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_eidl8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fcr1k"]
+size = Vector2(32, 32)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fcr1k"]
+friction = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eg2w2"]
+texture = ExtResource("3_fcr1k")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, 16, 16, -16, -16, -16, -16, 16)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, 16, 16, -16, -16, -16, -16, 16)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, 16, 16, -16, -16, -16, -16, 16)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, 16, 16, -16, -16, -16, -16, 16)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, 16, 16, -16, -16, -16, -16, 16)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -16, 16, 16, -16, 16)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, 16, -16, 16)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -16, -16, -16, -16, 16)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-11.2226, -16, 10.0109, -16, 10.0109, 16, -10.8815, 16)
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-11.0319, -16, 10.115, -16, 9.88572, 9.97168, -16, 10.1241, -16, -10.9996, -10.9746, -11.0032)
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-11.2226, -16, 10.0109, -16, 10.0109, -10.9996, 16, -10.9996, 16, 10.0686, -11.0739, 9.95912)
+3:3/0 = 0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(9.95076, 16, -10.9216, 16, -10.9253, -10.9996, 16, -10.9996, 16, 10.0686, 10.0201, 9.98543)
+0:4/0 = 0
+0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(9.95076, 16, -10.9216, 16, -10.8522, 9.98544, -16, 10.1241, -16, -10.9996, 10.0334, -10.9996)
+2:4/0 = 0
+3:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -16, 16, 16, -16, -16)
+2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -10.9714, 16, 10.0721, -16, 10.1241, -16, -10.9996)
+
+[sub_resource type="TileSet" id="TileSet_eidl8"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_fcr1k")
+sources/0 = SubResource("TileSetAtlasSource_eg2w2")
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_eidl8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o7vx2"]
 size = Vector2(1152, 82)
 
 [node name="Common" type="Node2D"]
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(5, 4)
+scale = Vector2(18.2188, 10.3125)
+texture = SubResource("GradientTexture2D_fcr1k")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="TestGround" type="RigidBody2D" parent="."]
+[node name="Player" type="RigidBody2D" parent="."]
+angular_damp = 100.0
+script = ExtResource("2_eidl8")
 
-[node name="TestGroundCollider" type="CollisionShape2D" parent="TestGround"]
-position = Vector2(-4, 280)
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="Player"]
+sprite_frames = SubResource("SpriteFrames_eidl8")
+autoplay = "default"
+script = SubResource("GDScript_eidl8")
+
+[node name="PlayerShape" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_fcr1k")
+
+[node name="CollidingLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AADv/wQAAAAAAAEAAADw/wQAAAAAAAEAAADx/wQAAAAAAAEAAADy/wQAAAAAAAEAAADz/wQAAAAAAAEAAAD0/wQAAAAAAAEAAAD1/wQAAAAAAAEAAAD2/wQAAAAAAAEAAAD3/wQAAAAAAAEAAAD4/wQAAAAAAAEAAAD5/wQAAAAAAAEAAAD6/wQAAAAAAAEAAAD7/wQAAAAAAAEAAAD8/wQAAAAAAAEAAAD9/wQAAAAAAAEAAAD+/wQAAAAAAAEAAAD//wQAAAAAAAEAAAAAAAQAAAAAAAEAAAABAAQAAAAAAAEAAAACAAQAAAAAAAEAAAADAAQAAAAAAAEAAAAEAAQAAAADAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAABAAAAAAAHAAQAAAABAAAAAAAIAAQAAAABAAAAAAAJAAQAAAABAAAAAAAKAAQAAAABAAAAAAALAAQAAAABAAAAAAAMAAQAAAABAAAAAAANAAQAAAABAAAAAAAOAAQAAAABAAAAAAAPAAQAAAABAAAAAADv/wUAAAAAAAAAAADw/wUAAAAAAAAAAADx/wUAAAAAAAAAAADy/wUAAAAAAAAAAADz/wUAAAAAAAAAAAD0/wUAAAAAAAAAAAD1/wUAAAAAAAAAAAD2/wUAAAAAAAAAAAD3/wUAAAAAAAAAAAD4/wUAAAAAAAAAAAD5/wUAAAAAAAAAAAD6/wUAAAAAAAAAAAD7/wUAAAAAAAAAAAD8/wUAAAAAAAAAAAD9/wUAAAAAAAAAAAD+/wUAAAAAAAAAAAD//wUAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAKAAUAAAAAAAAAAAALAAUAAAAAAAAAAAAMAAUAAAAAAAAAAAANAAUAAAAAAAAAAAAOAAUAAAAAAAAAAAAPAAUAAAAAAAAAAAAPAAYAAAAAAAAAAAAPAAcAAAAAAAAAAAAPAAgAAAAAAAAAAAAOAAgAAAAAAAAAAAANAAgAAAAAAAAAAAAMAAgAAAAAAAAAAAALAAgAAAAAAAAAAAAKAAgAAAAAAAAAAAAJAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAHAAgAAAAAAAAAAAAGAAgAAAAAAAAAAAAFAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAAEAAcAAAAAAAAAAAADAAcAAAAAAAAAAAACAAcAAAAAAAAAAAABAAcAAAAAAAAAAAAAAAcAAAAAAAAAAAD//wcAAAAAAAAAAAD+/wcAAAAAAAAAAAD9/wcAAAAAAAAAAAD8/wcAAAAAAAAAAAD8/wgAAAAAAAAAAAD7/wgAAAAAAAAAAAD9/wgAAAAAAAAAAAD+/wgAAAAAAAAAAAD//wgAAAAAAAAAAAAAAAgAAAAAAAAAAAABAAgAAAAAAAAAAAACAAgAAAAAAAAAAAADAAgAAAAAAAAAAAD6/wgAAAAAAAAAAAD5/wgAAAAAAAAAAAD4/wgAAAAAAAAAAAD3/wgAAAAAAAAAAAD2/wgAAAAAAAAAAAD1/wgAAAAAAAAAAAD1/wcAAAAAAAAAAAD0/wcAAAAAAAAAAADz/wcAAAAAAAAAAADy/wcAAAAAAAAAAADy/wgAAAAAAAAAAADx/wgAAAAAAAAAAADw/wgAAAAAAAAAAADv/wgAAAAAAAAAAADz/wgAAAAAAAAAAAD0/wgAAAAAAAAAAADw/wcAAAAAAAAAAADv/wcAAAAAAAAAAADv/wYAAAAAAAAAAADw/wYAAAAAAAAAAADx/wYAAAAAAAAAAADy/wYAAAAAAAAAAADz/wYAAAAAAAAAAAD0/wYAAAAAAAAAAAD1/wYAAAAAAAAAAAD2/wYAAAAAAAAAAAD3/wYAAAAAAAAAAAD4/wYAAAAAAAAAAAD5/wYAAAAAAAAAAAD6/wYAAAAAAAAAAAD7/wYAAAAAAAAAAAD8/wYAAAAAAAAAAAD9/wYAAAAAAAAAAAD+/wYAAAAAAAAAAAD//wYAAAAAAAAAAAAAAAYAAAAAAAAAAAABAAYAAAAAAAAAAAACAAYAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAAHAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAAJAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAALAAYAAAAAAAAAAAAMAAYAAAAAAAAAAAANAAYAAAAAAAAAAAAOAAYAAAAAAAAAAAAOAAcAAAAAAAAAAAANAAcAAAAAAAAAAAAMAAcAAAAAAAAAAAALAAcAAAAAAAAAAAAKAAcAAAAAAAAAAAAJAAcAAAAAAAAAAAAIAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAAGAAcAAAAAAAAAAAAFAAcAAAAAAAAAAAD7/wcAAAAAAAAAAAD6/wcAAAAAAAAAAAD5/wcAAAAAAAAAAAD4/wcAAAAAAAAAAAD3/wcAAAAAAAAAAAD2/wcAAAAAAAAAAADx/wcAAAAAAAAAAAAEAAMAAAADAAEAAAAFAAIAAAADAAEAAAAGAAEAAAADAAEAAAAHAAAAAAADAAEAAAAIAAAAAAAAAAEAAAAJAAAAAAAAAAEAAAAKAAAAAAAAAAEAAAALAAAAAAAAAAEAAAAFAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAGAAIAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAEAAAAAAAAAAAAIAAEAAAAAAAAAAAAJAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAALAAIAAAAAAAAAAAALAAMAAAAAAAAAAAAKAAMAAAAAAAAAAAAJAAMAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAJAAIAAAAAAAAAAAAKAAIAAAAAAAAAAAANAAMAAAADAAIAAAANAAIAAAADAAIAAAANAAEAAAADAAIAAAANAAAAAAADAAIAAAANAP//AAADAAIAAAANAP7/AAADAAIAAAANAP3/AAAAAAQAAAAMAP3/AAACAAMAAAALAP3/AAACAAMAAAAKAP3/AAACAAMAAAAJAP3/AAACAAMAAAAIAP3/AAACAAMAAAAHAP3/AAACAAMAAAAGAP3/AAACAAMAAAAFAP3/AAACAAMAAAAEAP3/AAACAAMAAAADAP3/AAACAAMAAAACAP3/AAACAAMAAAABAP3/AAABAAMAAAABAPz/AAAAAAQAAAAAAPz/AAADAAMAAAAAAP3/AAAAAAMAAAD///3/AAABAAMAAAD///z/AAADAAIAAAD///v/AAADAAIAAAA=")
+tile_set = SubResource("TileSet_eidl8")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 324)
+physics_material_override = SubResource("PhysicsMaterial_eidl8")
+
+[node name="TestGroundCollider" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-55, 131)
 shape = SubResource("RectangleShape2D_o7vx2")
-
-[node name="Player" type="AnimatedSprite2D" parent="."]

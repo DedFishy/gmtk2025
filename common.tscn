@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cn3yvyxcm8dnk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o7vx2"]
+size = Vector2(1152, 82)
+
+[node name="Common" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="TestGround" type="RigidBody2D" parent="."]
+
+[node name="TestGroundCollider" type="CollisionShape2D" parent="TestGround"]
+position = Vector2(-4, 280)
+shape = SubResource("RectangleShape2D_o7vx2")
+
+[node name="Player" type="AnimatedSprite2D" parent="."]

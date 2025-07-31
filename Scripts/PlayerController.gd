@@ -5,7 +5,7 @@ const jump_power = 500
 
 const jump_raycast_distance = 50;
 
-const max_horizontal_velocity = 400;
+const max_horizontal_velocity = 1200;
 
 const velocity_dampen = 0.8;
 
@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor:
 		floor_normal = get_collision_tile_at_position(is_on_floor) * PI
 		var target_rotation = floor_normal
-		rotation = lerp_angle(rotation, target_rotation, 0.1)
+		rotation = lerp_angle(rotation, target_rotation, 0.8)
 		print(rad_to_deg(target_rotation))
 		print("VS")
 		print(rad_to_deg(rotation))
@@ -76,8 +76,9 @@ func do_jump_raycast():
 func get_collision_tile_at_position(position: Vector2) -> float:
 	var tile_layer = get_tree().get_current_scene().get_node("CollidingLayer")
 	var tile_coord = tile_layer.local_to_map(tile_layer.to_local(position))
-	var tile_slope_rad = tile_layer.get_cell_tile_data(tile_coord).get_custom_data("SlopeRadians")
-	return tile_slope_rad
+	var tile = tile_layer.get_cell_tile_data(tile_coord)
+	var slope_rad = tile.get_custom_data("SlopeRadians")
+	return slope_rad
 
 func shoot_grapple():
 	# Add manual hook delete button or maybe a time out, probably just make the last one clear when new one maid, or maybe even spawn allow for more then one hook

@@ -37,7 +37,6 @@ func generateHook(startingNode, endingPoint):
 		joints.append(joint)
 		add_child(joints[i])
 	
-	var startingAnchor = StaticBody2D.new()
 	var endingAnchor = StaticBody2D.new()
 
 	endingAnchor.add_child(CollisionShape2D.new())
@@ -55,7 +54,7 @@ func generateHook(startingNode, endingPoint):
 	endingJoint.node_a = segments[segments.size()-1].get_path()
 	endingJoint.node_b = endingAnchor.get_path()
 	
-	startingJoint.position = Vector2(startingNode.position.x + spawnOffset/2.0, startingNode.position.y + spawnOffset/2)
+	startingJoint.position = Vector2(startingNode.position.x + spawnOffset/2.0, startingNode.position.y + spawnOffset/2.0)
 	endingJoint.position = Vector2(endingPose.x + segmentSize.x * 1.1, endingPose.y + segmentSize.y * 1.1)
 	
 	add_child(startingJoint)

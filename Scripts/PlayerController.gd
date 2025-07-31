@@ -2,7 +2,6 @@ extends RigidBody2D
 
 const crouch_power = 100
 const jump_power = 500
-const gravity = 1200
 
 const jump_raycast_distance = 50;
 
@@ -25,14 +24,15 @@ func _physics_process(delta: float) -> void:
 	var is_on_floor = do_jump_raycast()
 	if is_on_floor:
 		floor_normal = get_collision_tile_at_position(is_on_floor) * PI
-		var target_rotation = floor_normal + PI / 2
+		var target_rotation = floor_normal
 		rotation = lerp_angle(rotation, target_rotation, 0.1)
 		print(rad_to_deg(target_rotation))
+		print("VS")
+		print(rad_to_deg(rotation))
 
 	var floor_tangent = Vector2.RIGHT.rotated(floor_normal)
 	
 		
-	linear_velocity.y += gravity * delta
 
 	linear_velocity.y -= vertical_input * delta
 

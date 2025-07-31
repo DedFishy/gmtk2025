@@ -1,7 +1,7 @@
-[gd_scene load_steps=14 format=4 uid="uid://cn3yvyxcm8dnk"]
+[gd_scene load_steps=14 format=4 uid="uid://dyuusrymeav04"]
 
 [ext_resource type="Texture2D" uid="uid://dmhs28ewqpes" path="res://Assets/Textures/player.png" id="1_s0q0j"]
-[ext_resource type="Script" uid="uid://wh6aieip2y42" path="res://Scripts/PlayerController.gd" id="2_eidl8"]
+[ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="2_eidl8"]
 [ext_resource type="Texture2D" uid="uid://cxnim1ki8wh04" path="res://Assets/Textures/Lab Tilemap.png" id="3_fcr1k"]
 
 [sub_resource type="Gradient" id="Gradient_eidl8"]

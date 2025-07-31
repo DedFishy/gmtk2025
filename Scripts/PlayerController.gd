@@ -2,7 +2,6 @@ extends RigidBody2D
 
 const crouch_power = 100
 const jump_power = 500
-const gravity = 1200
 
 const jump_raycast_distance = 50;
 
@@ -31,9 +30,6 @@ func _physics_process(delta: float) -> void:
 
 	var floor_tangent = Vector2.RIGHT.rotated(floor_normal)
 	
-		
-	linear_velocity.y += gravity * delta
-
 	linear_velocity.y -= vertical_input * delta
 
 	if Input.is_action_just_pressed("jump") and is_on_floor:
@@ -42,18 +38,25 @@ func _physics_process(delta: float) -> void:
 	if horizontal_input != 0:
 		var desired_velocity = floor_tangent * horizontal_input * max_horizontal_velocity
 		print(desired_velocity)
-		linear_velocity.x = lerp(linear_velocity.x, desired_velocity.x, .5)
+		linear_velocity.x = lerp(linear_velocity.x, desired_velocity.x, .5 * delta)
 	else:
-		linear_velocity.x *= velocity_dampen
+		linear_velocity.x *= velocity_dampen * delta
+	
 	
 	if GrappleHookGen.hookExists(): 
 		var averageSegmentDistence = GrappleHookGen.getAverageDistenceBetweenSegments()
-		var forceDir = GrappleHookGen.getEndPointPose().normalized() * -1
-		if(averageSegmentDistence < 25):
+		var forceDir = GrappleHookGen.getEndPointPose().normalized()
+		if(averageSegmentDistence < 22):
 			forceDir *= 0
 		else:
 			forceDir *= averageSegmentDistence
-		linear_velocity += Vector2(5, 5) * -forceDir
+		var velocityMod = Vector2(10, 10) * forceDir
+		var velocityModMag = velocityMod.length()
+		velocityMod *= -1
+		if velocityModMag > 1000:
+			velocityModMag = 1000
+		print(velocityMod)	
+		#linear_velocity += velocityMod
 
 
 	shoot_grapple()

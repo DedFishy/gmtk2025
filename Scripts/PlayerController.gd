@@ -12,6 +12,14 @@ const velocity_dampen = 1;
 
 const max_grapple_distence = 500
 
+const maxSwingSpeed = 800
+const angulerAccelleration = 3
+var currentAngleSpeed = 0
+
+
+var hookLength = 0
+var lastSwingPose = Vector2()
+
 func _input(event):
 	if event.is_action_pressed("jump"):
 		pass
@@ -41,15 +49,35 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x *= velocity_dampen * delta
 	
-	if GrappleHookGen.hookExists(): 
-		var averageSegmentDistence = GrappleHookGen.getAverageDistenceBetweenSegments()
-		var forceDir = (GrappleHookGen.getEndPointPose() - position).normalized()
-		if(averageSegmentDistence < 25):
-			forceDir *= 0
-		else:
-			forceDir *= averageSegmentDistence
-		velocity += Vector2(1000, 1000) * forceDir * delta
+	
+	if GrappleHookGen.hookExists():
+		var endPoint = GrappleHookGen.getEndPointPose()
+		var ropeLength = GrappleHookGen.ropeLength
+		if hookLength == 0:
+			hookLength = ropeLength
+			currentAngleSpeed = velocity.length() / ropeLength
+		var poseDelta = position - endPoint
+		var dist = poseDelta.length()
+		velocity = Vector2()
+		if dist > ropeLength:
+			var dir = poseDelta.normalized()
+			position = endPoint + dir * ropeLength
 
+		var angle = poseDelta.angle()
+		var gravityForce = -sin(angle - PI/2) * gravity / ropeLength / 1.5
+		currentAngleSpeed = min(currentAngleSpeed + angulerAccelleration * delta, maxSwingSpeed / ropeLength)
+		var delta_angle = -horizontal_input * currentAngleSpeed * delta
+		delta_angle += gravityForce * delta
+		angle += delta_angle
+		var new_offset = Vector2(cos(angle), sin(angle)) * ropeLength
+		lastSwingPose = position
+		position = endPoint + new_offset
+	elif hookLength != 0:
+		var translationalMag = hookLength * currentAngleSpeed
+		currentAngleSpeed = 0
+		var dir = (position - lastSwingPose).normalized()
+		velocity = translationalMag * dir
+		hookLength = 0
 	move_and_slide()
 
 	shoot_grapple()

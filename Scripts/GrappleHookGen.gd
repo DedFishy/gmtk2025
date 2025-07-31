@@ -7,6 +7,7 @@ var segments = Array()
 var joints = Array()
 
 var _endingPoint
+var ropeLength = Vector2()
 
 func generateHook(startingNode, endingPoint):
 	_endingPoint = endingPoint
@@ -16,7 +17,7 @@ func generateHook(startingNode, endingPoint):
 	var angle = startingPose.angle_to_point(endingPoint)
 	var segmentSize = spriteSize.length() * dir
 	var numSegments = int((endingPoint - startingPose).length() / segmentSize.length()) + 1
-	
+	ropeLength = (endingPoint - startingNode.position).length()
 	for i in range(0, numSegments):
 		segments.append(_generateSegment(Vector2(startingPose.x + segmentSize.x * i, startingPose.y + segmentSize.y * i), angle, spriteSize))
 		segments[i].name = "Segment" + str(i)
@@ -67,6 +68,8 @@ func getAverageDistenceBetweenSegments():
 		sum += segments[i].position.distance_to(segments[i+1].position)
 		number+=1
 	return sum / number
+
+
 
 func getEndPointPose():
 	return _endingPoint

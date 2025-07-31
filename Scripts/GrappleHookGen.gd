@@ -5,6 +5,7 @@ var defaultSpriteSize = Vector2(8, 4)
 var spawnOffset = 20
 var segments = Array()
 func generateHook(startingNode, endingPoint):
+	print(endingPoint)
 	var spriteSize = scaleFactor * defaultSpriteSize
 	var dir = (endingPoint - startingNode.position).normalized()
 	var startingPose = startingNode.position + (spawnOffset * dir)
@@ -12,10 +13,6 @@ func generateHook(startingNode, endingPoint):
 	var segmentSize = spriteSize.length() * dir
 	var numSegments = int((endingPoint - startingPose).length() / segmentSize.length()) + 1
 	
-	print(numSegments)
-	print(startingPose)
-	print(spriteSize)
-
 	for i in range(0, numSegments):
 		segments.append(_generateSegment(Vector2(startingPose.x + segmentSize.x * i, startingPose.y + segmentSize.y * i), angle, spriteSize))
 		segments[i].name = "Segment" + str(i)
@@ -80,7 +77,12 @@ func _generateSegment(position, angle, spriteSize):
 	
 	return segment
 
+func hookExists():
+	return segments.size() > 1
+
 func deleteHook():
 	for i in range(0, segments.size()):
 		segments[i].queue_free()
+	
+	segments.clear()
 	

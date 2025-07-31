@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bba4h2bajraqn"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ntloq"]
+
+[node name="Ant" type="Node2D"]
+
+[node name="SpawnPoint" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(525, 501)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-523, -386)
+shape = SubResource("WorldBoundaryShape2D_ntloq")

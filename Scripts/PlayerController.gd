@@ -43,7 +43,7 @@ func _physics_process(delta: float) -> void:
 	
 	if GrappleHookGen.hookExists(): 
 		var averageSegmentDistence = GrappleHookGen.getAverageDistenceBetweenSegments()
-		var forceDir = GrappleHookGen.getEndPointPose().normalized() * 1
+		var forceDir = (GrappleHookGen.getEndPointPose() - position).normalized()
 		if(averageSegmentDistence < 25):
 			forceDir *= 0
 		else:

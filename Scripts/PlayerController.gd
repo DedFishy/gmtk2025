@@ -37,5 +37,4 @@ func do_jump_raycast() -> bool:
 	return !space_state.intersect_ray(query).is_empty()
 
 func shoot_grapple():
-	pass
-	#generateHook(self, position, segmentsPerUnit)
+	GrappleHookGen.generateHook(self, position)

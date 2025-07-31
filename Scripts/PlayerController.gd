@@ -10,10 +10,10 @@ const max_horizontal_velocity = 400;
 
 const velocity_dampen = 0.8;
 
-const max_grapple_distence = 100
+const max_grapple_distence = 500
 
 func _input(event):
-	if event.is_action_pressed("Jump"):
+	if event.is_action_pressed("jump"):
 		pass
 		
 
@@ -43,6 +43,15 @@ func _physics_process(delta: float) -> void:
 		print(velocity.x)
 	else:
 		velocity.x *= velocity_dampen
+	
+	if GrappleHookGen.hookExists(): 
+		var averageSegmentDistence = GrappleHookGen.getAverageDistenceBetweenSegments()
+		var forceDir = GrappleHookGen.getEndPointPose().normalized() * -1
+		if(averageSegmentDistence < 25):
+			forceDir *= 0
+		else:
+			forceDir *= averageSegmentDistence
+		velocity += Vector2(5, 5) * -forceDir
 
 	move_and_slide()
 
@@ -59,22 +68,22 @@ func do_jump_raycast() -> bool:
 func shoot_grapple():
 	# Add manual hook delete button or maybe a time out, probably just make the last one clear when new one maid, or maybe even spawn allow for more then one hook
 	if Input.is_action_just_pressed("ShootHook") and not GrappleHookGen.hookExists():
-		var direction = get_global_mouse_position().normalized()
-		var landedPose = do_grapple_raycast(direction)
-		if landedPose.length() >= max_grapple_distence:
-			return
+		var landedPose = do_grapple_raycast()
 		GrappleHookGen.generateHook(self, landedPose)
 	elif Input.is_action_just_pressed("DeleteHook"):
 		GrappleHookGen.deleteHook()
 
 
-func do_grapple_raycast(direction) -> Vector2:
+func do_grapple_raycast() -> Vector2:
 	var space_state = get_world_2d().direct_space_state
 
-	var query = PhysicsRayQueryParameters2D.create(position, position + direction * max_grapple_distence)
+	var query = PhysicsRayQueryParameters2D.new()
+	query.from = position
+	var mousePose = get_global_mouse_position() 
+	query.to = mousePose
 	query.collide_with_areas = false
 	var result = space_state.intersect_ray(query)
 	if result:
 		return result.position
 	else:
-		return position + direction * max_grapple_distence
+		return mousePose 

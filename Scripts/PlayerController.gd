@@ -1,8 +1,8 @@
-extends RigidBody2D
+extends CharacterBody2D
 
-const movement_speed = 50
 const crouch_power = 100
 const jump_power = 500
+const gravity = 1200
 
 const jump_raycast_distance = 50;
 
@@ -16,18 +16,35 @@ func _input(event):
 	if event.is_action_pressed("Jump"):
 		pass
 		
+
 func _physics_process(delta: float) -> void:
-	var horizontal_input = (Input.get_action_strength("right") - Input.get_action_strength("left")) * movement_speed
+	var horizontal_input = Input.get_action_strength("right") - Input.get_action_strength("left")
 	var vertical_input = -Input.get_action_strength("crouch") * crouch_power
-	if Input.is_action_just_pressed("jump"):
-		if do_jump_raycast():
-			print("Jump")
-			vertical_input += Input.get_action_strength("jump") * jump_power
-	if (horizontal_input > 0 and (linear_velocity.x < max_horizontal_velocity)) or (horizontal_input < 0 and (linear_velocity.x > -max_horizontal_velocity)):
-		linear_velocity.x += horizontal_input
-	elif (horizontal_input == 0):
-		linear_velocity.x *= velocity_dampen;
-	linear_velocity.y -= vertical_input
+	var floor_normal = Vector2.UP
+	if is_on_floor():
+		floor_normal = get_floor_normal()
+		var target_rotation = floor_normal.angle() + PI / 2
+		rotation = lerp_angle(rotation, target_rotation, 0.1)
+
+	var floor_tangent = Vector2(-floor_normal.y, floor_normal.x).normalized()
+	
+		
+	velocity.y += gravity * delta
+
+	velocity.y -= vertical_input * delta
+
+	if Input.is_action_just_pressed("jump") and do_jump_raycast():
+		velocity.y -= jump_power
+
+	if horizontal_input != 0:
+		var desired_velocity = floor_tangent * horizontal_input * max_horizontal_velocity
+		print(desired_velocity)
+		velocity.x = lerp(velocity.x, desired_velocity.x, .5)
+		print(velocity.x)
+	else:
+		velocity.x *= velocity_dampen
+
+	move_and_slide()
 
 	shoot_grapple()
 

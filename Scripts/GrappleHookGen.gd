@@ -68,6 +68,7 @@ func _generateSegment(position, angle, spriteSize):
 
 	segment.position = position
 	segment.rotate(angle)
+	segment.z_index = 1
 
 	segment.mass = 50
 	sprite.texture = preload("res://Assets/Textures/Rope_Placeholder.png")

@@ -3,6 +3,7 @@ extends Node
 const scaleFactor = Vector2(2.5, 2.5)
 const defaultSpriteSize = Vector2(8, 4)
 const spawnOffset = 20
+const timePerSegment = .025
 var segments = Array()
 var joints = Array()
 
@@ -27,6 +28,11 @@ func generateHook(startingNode, endingPoint):
 		segments[i].gravity_scale = .2
 		segments[i].linear_damp = 9.0
 		segments[i].angular_damp = 9.0
+		var timer = get_tree().create_timer(timePerSegment * i)
+		timer.timeout.connect(func():
+			if i >= 0 and i < segments.size() and is_instance_valid(segments[i]):
+				segments[i].modulate.a = 1
+		)
 
 	
 	for i in range(0, numSegments-1):
@@ -34,6 +40,8 @@ func generateHook(startingNode, endingPoint):
 		joint.node_a = segments[i].get_path()
 		joint.node_b = segments[i+1].get_path()
 		joint.position = Vector2((segments[i].position.x + segmentSize.x/2), (segments[i].position.y + segmentSize.y/2))
+		joint.bias = 1.0
+		joint.softness = .5
 		joint.rotate(angle)
 		joints.append(joint)
 		add_child(joints[i])
@@ -47,6 +55,10 @@ func generateHook(startingNode, endingPoint):
 
 	var startingJoint = PinJoint2D.new()
 	var endingJoint = PinJoint2D.new()
+	startingJoint.bias = 1.0
+	endingJoint.bias = 1.0
+	startingJoint.softness = .5
+	endingJoint.softness = .5
 	joints.append(startingJoint)
 	joints.append(endingJoint)
 	startingJoint.node_a = startingNode.get_path()
@@ -61,6 +73,7 @@ func generateHook(startingNode, endingPoint):
 	add_child(startingJoint)
 	add_child(endingJoint)
 
+
 func getAverageDistenceBetweenSegments():
 	var sum = 0
 	var number = 0
@@ -68,8 +81,6 @@ func getAverageDistenceBetweenSegments():
 		sum += segments[i].position.distance_to(segments[i+1].position)
 		number+=1
 	return sum / number
-
-
 
 func getEndPointPose():
 	return _endingPoint
@@ -90,6 +101,7 @@ func _generateSegment(position, angle, spriteSize):
 	sprite.apply_scale(scaleFactor)
 	shape.size = spriteSize
 	collider.shape = shape
+	segment.modulate.a = 0
 	return segment
 
 func hookExists():

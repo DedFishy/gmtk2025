@@ -5,7 +5,7 @@ const jump_power = 500
 
 const jump_raycast_distance = 50;
 
-const max_horizontal_velocity = 1200;
+const max_horizontal_velocity = 2000;
 
 const velocity_dampen = 0.8;
 
@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor:
 		floor_normal = get_collision_tile_at_position(is_on_floor) * PI
 		var target_rotation = floor_normal
-		rotation = lerp_angle(rotation, target_rotation, 0.8)
+		rotation = lerp_angle(rotation, target_rotation, 1 * delta)
 		print(rad_to_deg(target_rotation))
 		print("VS")
 		print(rad_to_deg(rotation))
@@ -77,6 +77,7 @@ func get_collision_tile_at_position(position: Vector2) -> float:
 	var tile_layer = get_tree().get_current_scene().get_node("CollidingLayer")
 	var tile_coord = tile_layer.local_to_map(tile_layer.to_local(position))
 	var tile = tile_layer.get_cell_tile_data(tile_coord)
+	if not tile: return 0
 	var slope_rad = tile.get_custom_data("SlopeRadians")
 	return slope_rad
 

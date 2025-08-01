@@ -25,6 +25,7 @@ var current_reload_scene_time = 0
 var walk = Array()
 @onready
 var sprite = $PlayerSprite
+var airSFX
 
 func _ready() -> void:
 	var scene_node = get_parent()
@@ -33,6 +34,7 @@ func _ready() -> void:
 	walk.append($Walk1)
 	walk.append($Walk2)
 	walk.append($Walk3)
+	airSFX = $Air
 
 func _input(event):
 	if event.is_action_pressed("jump"):
@@ -65,7 +67,17 @@ func _physics_process(delta: float) -> void:
 	if(horizontal_input != 0 and is_on_floor()):
 		if(not (walk[0].playing or walk[1].playing or walk[2].playing)):
 			walk[randi_range(0, 2)].play()
-		
+	else:
+		walk[0].stop()
+		walk[1].stop()
+		walk[2].stop()
+
+	if not is_on_floor():
+		if !airSFX.playing:
+			airSFX.play()
+	else:
+		airSFX.stop()
+	
 	if GrappleHookGen.hookExists():
 		var endPoint = GrappleHookGen.getEndPointPose()
 		var ropeLength = GrappleHookGen.ropeLength

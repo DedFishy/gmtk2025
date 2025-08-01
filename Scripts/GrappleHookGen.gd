@@ -33,6 +33,7 @@ func generateHook(startingNode, endingPoint):
 		timer.timeout.connect(func():
 			if i >= 0 and i < segments.size() and is_instance_valid(segments[i]):
 				segments[i].modulate.a = 1
+				segments[i].get_child(0).play()
 		)
 
 	for i in range(0, numSegments-1):
@@ -87,7 +88,7 @@ func getEndPointPose():
 	
 func _generateSegment(position, angle, spriteSize):
 	var segment = RigidBody2D.new()
-	var sprite = Sprite2D.new()
+	var sprite = AnimatedSprite2D.new()
 	var collider = CollisionShape2D.new()
 	var shape = RectangleShape2D.new()
 	segment.add_child(sprite)
@@ -97,8 +98,10 @@ func _generateSegment(position, angle, spriteSize):
 	segment.z_index = 1
 
 	segment.mass = 50
-	sprite.texture = preload("res://Assets/Textures/Rope.png")
+	sprite.sprite_frames = preload("res://Assets/Textures/Rope.tres")
+	sprite.animation = "default"
 	sprite.apply_scale(scaleFactor)
+	sprite.rotate(PI)
 	shape.size = spriteSize
 	collider.shape = shape
 	segment.modulate.a = 0

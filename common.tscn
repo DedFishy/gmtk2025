@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://b2ovlqutqau52" path="res://Assets/SFX/walking2.wav" id="3_lim6q"]
 [ext_resource type="Script" uid="uid://txuyhiott7fk" path="res://Scripts/NextLevelTrigger.gd" id="4_eg2w2"]
 [ext_resource type="AudioStream" uid="uid://dq6xbuobgklvn" path="res://Assets/SFX/walking3.wav" id="4_t4i2r"]
-[ext_resource type="SpriteFrames" uid="uid://crr5j6kppfrfy" path="res://Assets/Textures/Rope.tres" id="7_lim6q"]
+[ext_resource type="SpriteFrames" uid="uid://banhy88ngn3nj" path="res://Assets/Textures/Rope.tres" id="7_lim6q"]
 
 [sub_resource type="Gradient" id="Gradient_eidl8"]
 offsets = PackedFloat32Array(0, 0.506494, 1)
@@ -159,20 +159,16 @@ shape = SubResource("RectangleShape2D_fcr1k")
 
 [node name="Walk1" type="AudioStreamPlayer2D" parent="Player"]
 stream = ExtResource("2_t5dku")
-bus = &"SFX"
 
 [node name="Walk2" type="AudioStreamPlayer2D" parent="Player"]
 stream = ExtResource("3_lim6q")
-bus = &"SFX"
 
 [node name="Walk3" type="AudioStreamPlayer2D" parent="Player"]
 stream = ExtResource("4_t4i2r")
-bus = &"SFX"
 
 [node name="Air" type="AudioStreamPlayer2D" parent="Player"]
 stream = SubResource("AudioStreamWAV_t5dku")
 volume_db = 0.1
-bus = &"SFX"
 
 [node name="level" type="Node2D" parent="."]
 

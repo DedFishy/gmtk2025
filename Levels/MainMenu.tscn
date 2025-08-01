@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://dmir306u1blwo"]
 
-[ext_resource type="Script" uid="uid://b8cagoa14p2x3" path="res://Scripts/StartGame.gd" id="1_2k6u6"]
-[ext_resource type="Script" uid="uid://befk4m5v3saqc" path="res://Scripts/SFXVolumeControl.gd" id="2_65ows"]
-[ext_resource type="Script" uid="uid://wuqh2s44rgt" path="res://Scripts/MusicControl.gd" id="3_2ld8x"]
+[ext_resource type="Script" path="res://Scripts/StartGame.gd" id="1_2k6u6"]
+[ext_resource type="Script" path="res://Scripts/SFXVolumeControl.gd" id="2_65ows"]
+[ext_resource type="Script" path="res://Scripts/MusicControl.gd" id="3_2ld8x"]
 
 [sub_resource type="Theme" id="Theme_2k6u6"]
 

@@ -21,3 +21,4 @@ func _physics_process(delta: float) -> void:
 			var scene_node = scene.instantiate()
 			level.add_child(scene_node)
 			player.position = scene_node.get_node("SpawnPoint").position
+			player.refresh_scene()

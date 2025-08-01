@@ -28,16 +28,20 @@ var sprite = $PlayerSprite
 var airSFX
 var airSFXPosition = 0
 var camera
+var scene_node
 
 func _ready() -> void:
-	var scene_node = get_parent()
-	scene_node.modulate.a = 1
+	refresh_scene()
 	
 	walk.append($Walk1)
 	walk.append($Walk2)
 	walk.append($Walk3)
 	airSFX = $Air
 	camera = scene_node.find_child("Camera2D")
+	
+func refresh_scene():
+	scene_node = get_parent()
+	scene_node.modulate.a = 1
 
 func _input(event):
 	if event.is_action_pressed("jump"):
@@ -146,7 +150,7 @@ func _physics_process(delta: float) -> void:
 			get_tree().reload_current_scene()
 
 func cameraControl(delta):
-	camera.position = lerp(camera.position, position, 1 * delta)
+	camera.position = lerp(camera.position, position, 4 * delta)
 	camera.rotation = lerp_angle(camera.rotation, rotation, 5 * delta)
 
 func face_grapple():

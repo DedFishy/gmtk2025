@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://dyuusrymeav04"]
+[gd_scene load_steps=22 format=4 uid="uid://dyuusrymeav04"]
 
 [ext_resource type="Script" uid="uid://wh6aieip2y42" path="res://Scripts/PlayerController.gd" id="2_eidl8"]
 [ext_resource type="AudioStream" uid="uid://k3gnfdyf3hvk" path="res://Assets/SFX/walking1.wav" id="2_t5dku"]
@@ -6,13 +6,64 @@
 [ext_resource type="AudioStream" uid="uid://b2ovlqutqau52" path="res://Assets/SFX/walking2.wav" id="3_lim6q"]
 [ext_resource type="Script" uid="uid://txuyhiott7fk" path="res://Scripts/NextLevelTrigger.gd" id="4_eg2w2"]
 [ext_resource type="AudioStream" uid="uid://dq6xbuobgklvn" path="res://Assets/SFX/walking3.wav" id="4_t4i2r"]
+[ext_resource type="Texture2D" uid="uid://ug26aofir33w" path="res://Assets/Textures/Lab.png" id="5_lim6q"]
 
-[sub_resource type="Gradient" id="Gradient_eidl8"]
-offsets = PackedFloat32Array(0, 0.506494, 1)
-colors = PackedColorArray(1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rnvhs"]
+size = Vector2(37, 136)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_fcr1k"]
-gradient = SubResource("Gradient_eidl8")
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fcr1k"]
+friction = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eg2w2"]
+texture = ExtResource("3_fcr1k")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, 16, 16, -16, -16, -16, -16, 16)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, 16, 16, -16, -16, -16, -16, 16)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, 16, 16, -16, -16, -16, -16, 16)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, 16, 16, -16, -16, -16, -16, 16)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, 16, 16, -16, -16, -16, -16, 16)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -16, 16, 16, -16, 16)
+3:1/0/custom_data_0 = 0.25
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, 16, -16, 16)
+1:2/0/custom_data_0 = -0.25
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -16, -16, -16, -16, 16)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-11.2226, -16, 10.0109, -16, 10.0109, 16, -10.8815, 16)
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-11.0319, -16, 10.115, -16, 9.88572, 9.97168, -16, 10.1241, -16, -10.9996, -10.9746, -11.0032)
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-11.2226, -16, 10.0109, -16, 10.0109, -10.9996, 16, -10.9996, 16, 10.0686, -11.0739, 9.95912)
+3:3/0 = 0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(9.95076, 16, -10.9216, 16, -10.9253, -10.9996, 16, -10.9996, 16, 10.0686, 10.0201, 9.98543)
+0:4/0 = 0
+0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(9.95076, 16, -10.9216, 16, -10.8522, 9.98544, -16, 10.1241, -16, -10.9996, 10.0334, -10.9996)
+2:4/0 = 0
+3:4/0 = 0
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -16, 16, 16, -16, -16)
+2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -10.9714, 16, 10.0721, -16, 10.1241, -16, -10.9996)
+
+[sub_resource type="TileSet" id="TileSet_eidl8"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 3
+physics_layer_0/collision_mask = 3
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_fcr1k")
+custom_data_layer_0/name = "SlopeRadians"
+custom_data_layer_0/type = 3
+sources/0 = SubResource("TileSetAtlasSource_eg2w2")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fcr1k"]
 load_path = "res://.godot/imported/Player.png-3996a0b2ac4635a02580425c52b8b3f7.ctex"
@@ -73,78 +124,37 @@ data = PackedByteArray("cW9hZgApd4ABAKxEFAAIGAAAAAAAAAAAAAAAAOAAQAAA0Q5Y09UGgQAA
 format = 3
 loop_mode = 1
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rnvhs"]
-size = Vector2(37, 136)
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fcr1k"]
-friction = 0.0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eg2w2"]
-texture = ExtResource("3_fcr1k")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-2:0/0 = 0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, 16, 16, -16, -16, -16, -16, 16)
-3:0/0 = 0
-3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, 16, 16, -16, -16, -16, -16, 16)
-0:1/0 = 0
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, 16, 16, -16, -16, -16, -16, 16)
-1:1/0 = 0
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, 16, 16, -16, -16, -16, -16, 16)
-2:1/0 = 0
-2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, 16, 16, -16, -16, -16, -16, 16)
-3:1/0 = 0
-3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -16, 16, 16, -16, 16)
-3:1/0/custom_data_0 = 0.25
-1:2/0 = 0
-1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, 16, -16, 16)
-1:2/0/custom_data_0 = -0.25
-2:2/0 = 0
-2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -16, -16, -16, -16, 16)
-3:2/0 = 0
-3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-11.2226, -16, 10.0109, -16, 10.0109, 16, -10.8815, 16)
-0:3/0 = 0
-0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-11.0319, -16, 10.115, -16, 9.88572, 9.97168, -16, 10.1241, -16, -10.9996, -10.9746, -11.0032)
-1:3/0 = 0
-1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-11.2226, -16, 10.0109, -16, 10.0109, -10.9996, 16, -10.9996, 16, 10.0686, -11.0739, 9.95912)
-3:3/0 = 0
-3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(9.95076, 16, -10.9216, 16, -10.9253, -10.9996, 16, -10.9996, 16, 10.0686, 10.0201, 9.98543)
-0:4/0 = 0
-0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(9.95076, 16, -10.9216, 16, -10.8522, 9.98544, -16, 10.1241, -16, -10.9996, 10.0334, -10.9996)
-2:4/0 = 0
-3:4/0 = 0
-0:2/0 = 0
-0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -16, 16, 16, -16, -16)
-2:3/0 = 0
-2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -10.9714, 16, 10.0721, -16, 10.1241, -16, -10.9996)
-
-[sub_resource type="TileSet" id="TileSet_eidl8"]
-tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 3
-physics_layer_0/collision_mask = 3
-physics_layer_0/physics_material = SubResource("PhysicsMaterial_fcr1k")
-custom_data_layer_0/name = "SlopeRadians"
-custom_data_layer_0/type = 3
-sources/0 = SubResource("TileSetAtlasSource_eg2w2")
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eg2w2"]
 size = Vector2(1051.17, 28)
 
 [node name="Common" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(5, 4)
-scale = Vector2(18.2188, 10.3125)
-texture = SubResource("GradientTexture2D_fcr1k")
+[node name="level" type="Node2D" parent="."]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Lab" type="Sprite2D" parent="level"]
+scale = Vector2(10, 10)
+texture = ExtResource("5_lim6q")
+
+[node name="NextLevelTrigger" type="Node2D" parent="level"]
+script = ExtResource("4_eg2w2")
+metadata/NextLevelScene = "ant"
+
+[node name="Area2D" type="Area2D" parent="level/NextLevelTrigger"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level/NextLevelTrigger/Area2D"]
+position = Vector2(338, 45)
+shape = SubResource("RectangleShape2D_rnvhs")
+
+[node name="CollidingLayer" type="TileMapLayer" parent="level"]
+tile_map_data = PackedByteArray("AAD2/wMAAAAAAAEAAAD3/wMAAAAAAAEAAAD4/wMAAAABAAIAAAAIAAMAAAADAAEAAAAJAAMAAAAAAAEAAAAJAAQAAAAAAAAAAAAJAAUAAAAAAAAAAAAJAAYAAAAAAAAAAAAJAAcAAAAAAAAAAAAIAAcAAAAAAAAAAAD4/wcAAAAAAAAAAAD3/wcAAAAAAAAAAAD2/wcAAAAAAAAAAAD2/wYAAAAAAAAAAAD2/wUAAAAAAAAAAAD2/wQAAAAAAAAAAAD3/wQAAAAAAAAAAAD4/wQAAAAAAAAAAAD4/wUAAAAAAAAAAAD4/wYAAAAAAAAAAAD3/wUAAAAAAAAAAAD3/wYAAAAAAAAAAAAIAAYAAAAAAAAAAAAIAAUAAAAAAAAAAAAIAAQAAAAAAAAAAAD2/wIAAAADAAIAAAD2/wEAAAADAAIAAAD2/wAAAAADAAIAAAD2////AAADAAIAAAD2//7/AAADAAIAAAD2//3/AAADAAIAAAD2//z/AAADAAIAAAD2//v/AAADAAMAAAD3//v/AAACAAMAAAD4//v/AAACAAMAAAD5//v/AAACAAMAAAD6//v/AAACAAMAAAD7//v/AAACAAMAAAD8//v/AAACAAMAAAD9//v/AAACAAMAAAD+//v/AAACAAMAAAD///v/AAACAAMAAAAAAPv/AAACAAMAAAABAPv/AAACAAMAAAACAPv/AAACAAMAAAADAPv/AAACAAMAAAAEAPv/AAACAAMAAAAFAPv/AAACAAMAAAAGAPv/AAACAAMAAAAHAPv/AAACAAMAAAAIAPv/AAACAAMAAAAJAPv/AAAAAAQAAAAJAPz/AAADAAIAAAAJAP3/AAADAAIAAAAJAP7/AAADAAIAAAD2//n/AAAAAAAAAAD3//n/AAAAAAAAAAD4//n/AAAAAAAAAAD5//n/AAAAAAAAAAD6//n/AAAAAAAAAAD7//n/AAAAAAAAAAD8//n/AAAAAAAAAAD9//n/AAAAAAAAAAD+//n/AAAAAAAAAAD///n/AAAAAAAAAAAAAPn/AAAAAAAAAAABAPn/AAAAAAAAAAACAPn/AAAAAAAAAAADAPn/AAAAAAAAAAAEAPn/AAAAAAAAAAAFAPn/AAAAAAAAAAAGAPn/AAAAAAAAAAAHAPn/AAAAAAAAAAAIAPn/AAAAAAAAAAAJAPn/AAAAAAAAAAAJAPj/AAAAAAAAAAAIAPj/AAAAAAAAAAAHAPj/AAAAAAAAAAAGAPj/AAAAAAAAAAAFAPj/AAAAAAAAAAAEAPj/AAAAAAAAAAADAPj/AAAAAAAAAAACAPj/AAAAAAAAAAABAPj/AAAAAAAAAAAAAPj/AAAAAAAAAAD///j/AAAAAAAAAAD+//j/AAAAAAAAAAD9//j/AAAAAAAAAAD8//j/AAAAAAAAAAD7//j/AAAAAAAAAAD6//j/AAAAAAAAAAD5//j/AAAAAAAAAAD4//j/AAAAAAAAAAD3//j/AAAAAAAAAAD2//j/AAAAAAAAAAAJAP//AAAAAAEAAAA=")
+tile_set = SubResource("TileSet_eidl8")
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(-319, 0)
+position = Vector2(-271, 79)
 script = ExtResource("2_eidl8")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+ignore_rotation = false
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="Player"]
 sprite_frames = SubResource("SpriteFrames_eidl8")
@@ -158,36 +168,16 @@ shape = SubResource("RectangleShape2D_fcr1k")
 
 [node name="Walk1" type="AudioStreamPlayer2D" parent="Player"]
 stream = ExtResource("2_t5dku")
-bus = &"SFX"
 
 [node name="Walk2" type="AudioStreamPlayer2D" parent="Player"]
 stream = ExtResource("3_lim6q")
-bus = &"SFX"
 
 [node name="Walk3" type="AudioStreamPlayer2D" parent="Player"]
 stream = ExtResource("4_t4i2r")
-bus = &"SFX"
 
 [node name="Air" type="AudioStreamPlayer2D" parent="Player"]
 stream = SubResource("AudioStreamWAV_t5dku")
 volume_db = 0.1
-bus = &"SFX"
-
-[node name="level" type="Node2D" parent="."]
-
-[node name="NextLevelTrigger" type="Node2D" parent="level"]
-script = ExtResource("4_eg2w2")
-metadata/NextLevelScene = "ant"
-
-[node name="Area2D" type="Area2D" parent="level/NextLevelTrigger"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="level/NextLevelTrigger/Area2D"]
-position = Vector2(307, -3)
-shape = SubResource("RectangleShape2D_rnvhs")
-
-[node name="CollidingLayer" type="TileMapLayer" parent="level"]
-tile_map_data = PackedByteArray("AAD0/wQAAAAAAAEAAAD1/wQAAAAAAAEAAAD2/wQAAAAAAAEAAAD3/wQAAAAAAAEAAAD4/wQAAAAAAAEAAAD5/wQAAAAAAAEAAAD6/wQAAAAAAAEAAAD7/wQAAAAAAAEAAAD8/wQAAAAAAAEAAAD9/wQAAAAAAAEAAAAHAAQAAAABAAAAAAAIAAQAAAABAAAAAAAJAAQAAAABAAAAAAAKAAQAAAABAAAAAAD0/wUAAAAAAAAAAAD1/wUAAAAAAAAAAAD2/wUAAAAAAAAAAAD3/wUAAAAAAAAAAAD4/wUAAAAAAAAAAAD5/wUAAAAAAAAAAAD6/wUAAAAAAAAAAAD7/wUAAAAAAAAAAAD8/wUAAAAAAAAAAAD9/wUAAAAAAAAAAAAHAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAKAAUAAAAAAAAAAAAKAAgAAAAAAAAAAAAJAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAHAAgAAAAAAAAAAAD9/wcAAAAAAAAAAAD8/wcAAAAAAAAAAAD8/wgAAAAAAAAAAAD7/wgAAAAAAAAAAAD9/wgAAAAAAAAAAAD6/wgAAAAAAAAAAAD5/wgAAAAAAAAAAAD4/wgAAAAAAAAAAAD3/wgAAAAAAAAAAAD2/wgAAAAAAAAAAAD1/wgAAAAAAAAAAAD1/wcAAAAAAAAAAAD0/wcAAAAAAAAAAAD0/wgAAAAAAAAAAAD0/wYAAAAAAAAAAAD1/wYAAAAAAAAAAAD2/wYAAAAAAAAAAAD3/wYAAAAAAAAAAAD4/wYAAAAAAAAAAAD5/wYAAAAAAAAAAAD6/wYAAAAAAAAAAAD7/wYAAAAAAAAAAAD8/wYAAAAAAAAAAAD9/wYAAAAAAAAAAAAHAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAAJAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAAKAAcAAAAAAAAAAAAJAAcAAAAAAAAAAAAIAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAD7/wcAAAAAAAAAAAD6/wcAAAAAAAAAAAD5/wcAAAAAAAAAAAD4/wcAAAAAAAAAAAD3/wcAAAAAAAAAAAD2/wcAAAAAAAAAAAAKAP3/AAAAAAQAAAAJAP3/AAACAAMAAAAIAP3/AAACAAMAAAAHAP3/AAACAAMAAAAGAP3/AAACAAMAAAAFAP3/AAACAAMAAAAEAP3/AAACAAMAAAADAP3/AAACAAMAAAACAP3/AAACAAMAAAABAP3/AAACAAMAAAAAAP3/AAACAAMAAAD///3/AAACAAMAAAD+//3/AAACAAMAAAD9//3/AAACAAMAAAD8//3/AAACAAMAAAD7//3/AAACAAMAAAD6//3/AAACAAMAAAD5//3/AAACAAMAAAD4//3/AAACAAMAAAD3//3/AAACAAMAAAD2//3/AAACAAMAAAD1//3/AAACAAMAAAD0//3/AAADAAMAAAAHAAMAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAEAAAAAAAEAAAAHAAEAAAAAAAEAAAAHAAIAAAAAAAAAAAAJAAEAAAABAAIAAAAKAAIAAAAAAAEAAAAKAAMAAAACAAAAAAAJAAMAAAAAAAAAAAAJAAIAAAACAAAAAAAAAAQAAAAAAAEAAAABAAQAAAAAAAEAAAACAAQAAAAAAAEAAAADAAQAAAAAAAEAAAAEAAMAAAADAAEAAAAEAAQAAAADAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAEAAYAAAAAAAAAAAADAAYAAAAAAAAAAAACAAYAAAAAAAAAAAABAAYAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAABAAcAAAAAAAAAAAACAAcAAAAAAAAAAAADAAcAAAAAAAAAAAAEAAcAAAAAAAAAAAAEAAgAAAAAAAAAAAADAAgAAAAAAAAAAAACAAgAAAAAAAAAAAABAAgAAAAAAAAAAAAAAAgAAAAAAAAAAAAFAAQAAAAAAAAAAAAFAAUAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAcAAAAAAAAAAAAFAAgAAAAAAAAAAAAFAAMAAAAAAAEAAAD0//7/AAADAAIAAAD0////AAADAAIAAAD0/wAAAAADAAIAAAD0/wEAAAADAAIAAAD0/wIAAAADAAIAAAD0/wMAAAADAAIAAAAKAAEAAAADAAIAAAAKAAAAAAADAAIAAAAKAP//AAADAAIAAAAKAP7/AAADAAIAAAA=")
-tile_set = SubResource("TileSet_eidl8")
 
 [node name="WorldEdge" type="StaticBody2D" parent="." groups=["WorldEdge"]]
 

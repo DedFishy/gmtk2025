@@ -14,13 +14,13 @@ func generateHook(startingNode, endingPoint):
 	_endingPoint = endingPoint
 	var spriteSize = scaleFactor * defaultSpriteSize
 	var dir = (endingPoint - startingNode.position).normalized()
-	var startingPose = startingNode.position + (spawnOffset * dir)
+	var startingPose = startingNode.position
 	var angle = startingPose.angle_to_point(endingPoint)
 	var segmentSize = spriteSize.length() * dir
-	var numSegments = int((endingPoint - startingPose).length() / segmentSize.length()) + 1
+	var numSegments = (int((endingPoint - startingPose).length() / segmentSize.length()) + 1) * 2
 	ropeLength = (endingPoint - startingNode.position).length()
 	for i in range(0, numSegments):
-		segments.append(_generateSegment(Vector2(startingPose.x + segmentSize.x * i, startingPose.y + segmentSize.y * i), angle, spriteSize))
+		segments.append(_generateSegment(Vector2(startingPose.x + segmentSize.x * i * .5, startingPose.y + segmentSize.y * i * .5), angle, spriteSize))
 		segments[i].name = "Segment" + str(i)
 		add_child(segments[i])
 		segments[i].collision_mask = 1 << 1

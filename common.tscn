@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dmhs28ewqpes" path="res://Assets/Textures/player.png" id="1_s0q0j"]
 [ext_resource type="Script" uid="uid://wh6aieip2y42" path="res://Scripts/PlayerController.gd" id="2_eidl8"]
 [ext_resource type="Texture2D" uid="uid://cxnim1ki8wh04" path="res://Assets/Textures/Lab Tilemap.png" id="3_fcr1k"]
-[ext_resource type="Script" path="res://Scripts/NextLevelTrigger.gd" id="4_eg2w2"]
+[ext_resource type="Script" uid="uid://txuyhiott7fk" path="res://Scripts/NextLevelTrigger.gd" id="4_eg2w2"]
 
 [sub_resource type="Gradient" id="Gradient_eidl8"]
 offsets = PackedFloat32Array(0, 0.506494, 1)

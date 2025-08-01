@@ -57,14 +57,12 @@ func _physics_process(delta: float) -> void:
 			currentAngleSpeed = velocity.length() / ropeLength
 		var poseDelta = position - endPoint
 		var dist = poseDelta.length()
-		velocity = Vector2()
 		if dist > ropeLength:
 			var dir = poseDelta.normalized()
 			position = endPoint + dir * ropeLength
 		
 		var angle = poseDelta.angle()
 		var direction = Vector2(cos(angle), sin(angle)).normalized()
-		print(can_swing_to(direction, 1))
 		var gravityForce = -sin(angle - PI/2) * gravity / ropeLength / 1.5
 		currentAngleSpeed = min(currentAngleSpeed + angulerAccelleration * delta, maxSwingSpeed / ropeLength)
 		var delta_angle = 0.0
@@ -75,10 +73,12 @@ func _physics_process(delta: float) -> void:
 			delta_angle += gravityForce * delta
 		if canSwing:
 			delta_angle += gravityForce * delta
-		angle += delta_angle
-		var new_offset = Vector2(cos(angle), sin(angle)) * ropeLength
-		lastSwingPose = position
-		position = endPoint + new_offset
+		if not is_on_floor():
+			velocity = Vector2()
+			angle += delta_angle
+			var new_offset = Vector2(cos(angle), sin(angle)) * ropeLength
+			lastSwingPose = position
+			position = endPoint + new_offset
 	elif hookLength != 0:
 		var translationalMag = hookLength * currentAngleSpeed
 		currentAngleSpeed = 0

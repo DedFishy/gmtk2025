@@ -137,7 +137,7 @@ func _physics_process(delta: float) -> void:
 			get_tree().reload_current_scene()
 
 func face_grapple():
-	look_at(GrappleHookGen.getEndPointPose())
+	look_at(GrappleHookGen.getFirstSegmentPose())
 
 func check_collisions():
 	for i in range(0, get_slide_collision_count()):

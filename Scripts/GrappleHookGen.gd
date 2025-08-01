@@ -68,7 +68,7 @@ func generateHook(startingNode, endingPoint):
 	endingJoint.node_a = segments[segments.size()-1].get_path()
 	endingJoint.node_b = endingAnchor.get_path()
 	
-	startingJoint.position = Vector2(startingNode.position.x + spawnOffset/2.0, startingNode.position.y + spawnOffset/2.0)
+	startingJoint.position = Vector2(startingNode.position.x, startingNode.position.y)
 	endingJoint.position = Vector2(endingPose.x + segmentSize.x * 1.1, endingPose.y + segmentSize.y * 1.1)
 	
 	add_child(startingJoint)
@@ -105,6 +105,9 @@ func _generateSegment(position, angle, spriteSize):
 	collider.shape = shape
 	segment.modulate.a = 0
 	return segment
+
+func getFirstSegmentPose() -> Vector2:
+	return segments[0].position
 
 func hookExists():
 	return segments.size() > 1

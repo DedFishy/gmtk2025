@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=4 uid="uid://dyuusrymeav04"]
 
-[ext_resource type="Texture2D" uid="uid://4ffvt4apot4k" path="res://Assets/Textures/Player.png" id="2_eg2w2"]
+[ext_resource type="Texture2D" uid="uid://dmhs28ewqpes" path="res://Assets/Textures/Player.png" id="2_eg2w2"]
 [ext_resource type="Script" uid="uid://wh6aieip2y42" path="res://Scripts/PlayerController.gd" id="2_eidl8"]
 [ext_resource type="Texture2D" uid="uid://cxnim1ki8wh04" path="res://Assets/Textures/Lab Tilemap.png" id="3_fcr1k"]
 [ext_resource type="Script" uid="uid://txuyhiott7fk" path="res://Scripts/NextLevelTrigger.gd" id="4_eg2w2"]

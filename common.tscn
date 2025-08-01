@@ -1,5 +1,9 @@
 [gd_scene load_steps=22 format=4 uid="uid://dyuusrymeav04"]
 
+<<<<<<< Updated upstream
+=======
+[ext_resource type="Texture2D" path="res://Assets/Textures/Player.png" id="2_eg2w2"]
+>>>>>>> Stashed changes
 [ext_resource type="Script" uid="uid://wh6aieip2y42" path="res://Scripts/PlayerController.gd" id="2_eidl8"]
 [ext_resource type="AudioStream" uid="uid://k3gnfdyf3hvk" path="res://Assets/SFX/walking1.wav" id="2_t5dku"]
 [ext_resource type="Texture2D" uid="uid://cxnim1ki8wh04" path="res://Assets/Textures/Lab Tilemap.png" id="3_fcr1k"]

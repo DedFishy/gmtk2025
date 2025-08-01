@@ -22,6 +22,9 @@ var reload_scene = false
 var reload_scene_time = .3
 var current_reload_scene_time = 0
 
+@onready
+var sprite = $PlayerSprite
+
 func _ready() -> void:
 	var scene_node = get_parent()
 	scene_node.modulate.a = 1
@@ -92,6 +95,15 @@ func _physics_process(delta: float) -> void:
 		hookLength = 0
 	move_and_slide()
 	shoot_grapple()
+	
+	if GrappleHookGen.hookExists():
+		sprite.play("swinging")
+		face_grapple()
+	elif horizontal_input != 0: 
+		sprite.play("running")
+		sprite.flip_h = horizontal_input < 0;
+	else:
+		sprite.play("default")
 
 	if reload_scene:
 		if current_reload_scene_time < reload_scene_time:
@@ -103,7 +115,9 @@ func _physics_process(delta: float) -> void:
 			reload_scene = false
 			current_reload_scene_time = 0
 			get_tree().reload_current_scene()
-		
+
+func face_grapple():
+	look_at(GrappleHookGen.getEndPointPose())
 
 func check_collisions():
 	for i in range(0, get_slide_collision_count()):

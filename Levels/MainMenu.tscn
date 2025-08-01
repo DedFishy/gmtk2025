@@ -1,6 +1,43 @@
-[gd_scene load_steps=2 format=3 uid="uid://bl54j87trtvvu"]
+[gd_scene load_steps=8 format=3 uid="uid://dmir306u1blwo"]
 
-[ext_resource type="Script" uid="uid://cvpbvq7i86hl3" path="res://Levels/AdaptSize.gd" id="1_yw2i3"]
+[sub_resource type="Theme" id="Theme_2k6u6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_04b30"]
+bg_color = Color(0, 0.215686, 0.364706, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yw2i3"]
+bg_color = Color(0, 0.215686, 0.364706, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hr4vk"]
+bg_color = Color(0, 0.215686, 0.364706, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2k6u6"]
+bg_color = Color(0, 0.214557, 0.365073, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_65ows"]
+bg_color = Color(0, 0.384535, 0.571868, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hr4vk"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -9,6 +46,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_2k6u6")
 
 [node name="Label" type="Label" parent="."]
 custom_minimum_size = Vector2(25, 50)
@@ -22,7 +61,155 @@ offset_bottom = 50.0
 grow_horizontal = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
+theme_override_font_sizes/font_size = 80
 text = "Title"
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("1_yw2i3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(16.04, 12.04)
+color = Color(0.165656, 0.165656, 0.165656, 1)
+
+[node name="Button" type="Button" parent="." node_paths=PackedStringArray("shortcut_context")]
+visibility_layer = 1023
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.0
+offset_top = -95.0
+offset_right = 51.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.55, 1.55)
+mouse_force_pass_scroll_events = false
+mouse_default_cursor_shape = 2
+shortcut_context = NodePath("..")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxFlat_04b30")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_yw2i3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hr4vk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2k6u6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_65ows")
+text = "  PLAY!!!!!!  "
+
+[node name="SFX" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -497.0
+offset_top = -626.0
+offset_right = -457.0
+offset_bottom = -586.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.575, 1.51)
+
+[node name="Slider" type="HSlider" parent="SFX"]
+light_mask = 1023
+visibility_layer = 1023
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 181.0
+offset_top = 309.0
+offset_right = 420.0
+offset_bottom = 335.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.09, 1.09)
+mouse_default_cursor_shape = 2
+theme_override_constants/grabber_offset = 0
+theme_override_icons/tick = SubResource("NoiseTexture2D_hr4vk")
+max_value = 1.0
+step = 0.001
+value = 0.5
+
+[node name="Label" type="Label" parent="SFX"]
+custom_minimum_size = Vector2(25, 50)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 53.0
+offset_top = 250.0
+offset_right = 553.0
+offset_bottom = 473.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "SFX Volume
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Music" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -487.0
+offset_top = -725.0
+offset_right = -447.0
+offset_bottom = -685.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.525, 1.525)
+
+[node name="Slider" type="HSlider" parent="Music"]
+light_mask = 1023
+visibility_layer = 1023
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 181.0
+offset_top = 309.0
+offset_right = 420.0
+offset_bottom = 335.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.09, 1.09)
+mouse_default_cursor_shape = 2
+theme_override_constants/grabber_offset = 0
+theme_override_icons/tick = SubResource("NoiseTexture2D_hr4vk")
+max_value = 1.0
+step = 0.001
+value = 0.5
+
+[node name="Label" type="Label" parent="Music"]
+custom_minimum_size = Vector2(25, 50)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 53.0
+offset_top = 250.0
+offset_right = 553.0
+offset_bottom = 473.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "Music Volume
+"
+horizontal_alignment = 1
+vertical_alignment = 1

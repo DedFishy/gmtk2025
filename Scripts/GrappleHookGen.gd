@@ -97,7 +97,7 @@ func _generateSegment(position, angle, spriteSize):
 	segment.z_index = 1
 
 	segment.mass = 50
-	sprite.texture = preload("res://Assets/Textures/Rope_Placeholder.png")
+	sprite.texture = preload("res://Assets/Textures/Rope.png")
 	sprite.apply_scale(scaleFactor)
 	shape.size = spriteSize
 	collider.shape = shape

@@ -8,7 +8,7 @@ const jump_raycast_distance = 50;
 
 const max_horizontal_velocity = 800;
 
-const velocity_dampen = 1;
+const velocity_dampen = 5;
 
 const max_grapple_distence = 300
 const min_grapple_distence = 50
@@ -22,12 +22,17 @@ var reload_scene = false
 var reload_scene_time = .3
 var current_reload_scene_time = 0
 
+var walk = Array()
 @onready
 var sprite = $PlayerSprite
 
 func _ready() -> void:
 	var scene_node = get_parent()
 	scene_node.modulate.a = 1
+
+	walk.append($Walk1)
+	walk.append($Walk2)
+	walk.append($Walk3)
 
 func _input(event):
 	if event.is_action_pressed("jump"):
@@ -41,7 +46,7 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		floor_normal = get_floor_normal()
 		var target_rotation = floor_normal.angle() + PI / 2
-		rotation = lerp_angle(rotation, target_rotation, 5 * delta)
+		rotation = lerp_angle(rotation, target_rotation, 10 * delta)
 
 	var floor_tangent = Vector2(-floor_normal.y, floor_normal.x).normalized()
 	
@@ -53,11 +58,14 @@ func _physics_process(delta: float) -> void:
 
 	if horizontal_input != 0:
 		var desired_velocity = floor_tangent * horizontal_input * max_horizontal_velocity
-		velocity.x = lerp(velocity.x, desired_velocity.x, .5 * delta)
+		velocity.x = lerp(velocity.x, desired_velocity.x, 2 * delta)
 	else:
 		velocity.x *= velocity_dampen * delta
 	
-	
+	if(horizontal_input != 0 and is_on_floor()):
+		if(not (walk[0].playing or walk[1].playing or walk[2].playing)):
+			walk[randi_range(0, 2)].play()
+		
 	if GrappleHookGen.hookExists():
 		var endPoint = GrappleHookGen.getEndPointPose()
 		var ropeLength = GrappleHookGen.ropeLength

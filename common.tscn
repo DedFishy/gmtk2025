@@ -1,6 +1,5 @@
 [gd_scene load_steps=19 format=4 uid="uid://dyuusrymeav04"]
 
-[ext_resource type="Texture2D" uid="uid://dmhs28ewqpes" path="res://Assets/Textures/Player.png" id="2_eg2w2"]
 [ext_resource type="Script" uid="uid://wh6aieip2y42" path="res://Scripts/PlayerController.gd" id="2_eidl8"]
 [ext_resource type="Texture2D" uid="uid://cxnim1ki8wh04" path="res://Assets/Textures/Lab Tilemap.png" id="3_fcr1k"]
 [ext_resource type="Script" uid="uid://txuyhiott7fk" path="res://Scripts/NextLevelTrigger.gd" id="4_eg2w2"]
@@ -12,20 +11,23 @@ colors = PackedColorArray(1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_fcr1k"]
 gradient = SubResource("Gradient_eidl8")
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fcr1k"]
+load_path = "res://.godot/imported/Player.png-3996a0b2ac4635a02580425c52b8b3f7.ctex"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_rnvhs"]
-atlas = ExtResource("2_eg2w2")
+atlas = SubResource("CompressedTexture2D_fcr1k")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t5dku"]
-atlas = ExtResource("2_eg2w2")
+atlas = SubResource("CompressedTexture2D_fcr1k")
 region = Rect2(0, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lim6q"]
-atlas = ExtResource("2_eg2w2")
+atlas = SubResource("CompressedTexture2D_fcr1k")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t4i2r"]
-atlas = ExtResource("2_eg2w2")
+atlas = SubResource("CompressedTexture2D_fcr1k")
 region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eidl8"]

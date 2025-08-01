@@ -101,7 +101,6 @@ func _generateSegment(position, angle, spriteSize):
 	sprite.sprite_frames = preload("res://Assets/Textures/Rope.tres")
 	sprite.animation = "default"
 	sprite.apply_scale(scaleFactor)
-	sprite.rotate(PI)
 	shape.size = spriteSize
 	collider.shape = shape
 	segment.modulate.a = 0

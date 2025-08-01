@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://dyuusrymeav04"]
+[gd_scene load_steps=23 format=4 uid="uid://dyuusrymeav04"]
 
 [ext_resource type="Script" uid="uid://wh6aieip2y42" path="res://Scripts/PlayerController.gd" id="2_eidl8"]
 [ext_resource type="AudioStream" uid="uid://k3gnfdyf3hvk" path="res://Assets/SFX/walking1.wav" id="2_t5dku"]
@@ -6,7 +6,6 @@
 [ext_resource type="AudioStream" uid="uid://b2ovlqutqau52" path="res://Assets/SFX/walking2.wav" id="3_lim6q"]
 [ext_resource type="Script" uid="uid://txuyhiott7fk" path="res://Scripts/NextLevelTrigger.gd" id="4_eg2w2"]
 [ext_resource type="AudioStream" uid="uid://dq6xbuobgklvn" path="res://Assets/SFX/walking3.wav" id="4_t4i2r"]
-[ext_resource type="SpriteFrames" uid="uid://crr5j6kppfrfy" path="res://Assets/Textures/Rope.tres" id="7_lim6q"]
 
 [sub_resource type="Gradient" id="Gradient_eidl8"]
 offsets = PackedFloat32Array(0, 0.506494, 1)
@@ -213,8 +212,3 @@ position = Vector2(-588, 11)
 rotation = 1.5708
 scale = Vector2(0.75, 0.75)
 shape = SubResource("RectangleShape2D_eg2w2")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = ExtResource("7_lim6q")
-frame = 2
-frame_progress = 0.577541

@@ -11,7 +11,7 @@ const max_horizontal_velocity = 800;
 const velocity_dampen = 5;
 
 const max_grapple_distence = 300
-const min_grapple_distence = 80
+const min_grapple_distence = 100
 const maxSwingSpeed = 800
 const angulerAccelleration = 3
 var currentAngleSpeed = 0
@@ -151,10 +151,25 @@ func _physics_process(delta: float) -> void:
 
 func cameraControl(delta):
 	camera.position = lerp(camera.position, position, 4 * delta)
-	camera.rotation = lerp_angle(camera.rotation, rotation, 5 * delta)
+
+	if currentAngleSpeed > 4 or velocity.length() > 50:
+		camera.rotation = lerp_angle(camera.rotation, rotation, 3 * delta)
 
 func face_grapple():
-	look_at(GrappleHookGen.getFirstSegmentPose())
+	var delta = get_physics_process_delta_time()
+	var target_pos = GrappleHookGen.getFirstSegmentPose()
+	var to_target = (target_pos - global_position)
+	var rope_angle = to_target.angle()
+	var angle_diff = wrapf(rope_angle - rotation, -PI, PI)
+
+	# If swinging speed is near zero, don't rotate at all
+	if currentAngleSpeed < 4:
+		return
+
+	# Only rotate if the angle difference is big enough
+	if abs(angle_diff) > 0.1:
+		rotation = lerp_angle(rotation, rope_angle, 10 * delta)
+
 
 func check_collisions():
 	for i in range(0, get_slide_collision_count()):
@@ -185,6 +200,7 @@ func shoot_grapple():
 func do_grapple_raycast():
 	var space_state = get_world_2d().direct_space_state
 	var query = PhysicsRayQueryParameters2D.new()
+	query.collision_mask = 1 << 1
 	query.from = global_position
 	var mousePose = get_global_mouse_position() 
 	var delta = (mousePose - global_position)

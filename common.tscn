@@ -170,7 +170,7 @@ stream = ExtResource("4_t4i2r")
 
 [node name="Air" type="AudioStreamPlayer2D" parent="Player"]
 stream = ExtResource("8_t4i2r")
-volume_db = 0.1
+volume_db = -5.121
 
 [node name="WorldEdge" type="StaticBody2D" parent="." groups=["WorldEdge"]]
 

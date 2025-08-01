@@ -26,6 +26,7 @@ var walk = Array()
 @onready
 var sprite = $PlayerSprite
 var airSFX
+var airSFXPosition = 0
 
 func _ready() -> void:
 	var scene_node = get_parent()
@@ -74,9 +75,13 @@ func _physics_process(delta: float) -> void:
 
 	if not is_on_floor():
 		if !airSFX.playing:
-			airSFX.play()
+			print(airSFXPosition)
+			airSFX.play(airSFXPosition)
 	else:
-		airSFX.stop()
+		if airSFX.playing:
+			airSFXPosition = airSFX.get_playback_position()
+			airSFX.stop()
+			print(airSFXPosition)
 	
 	if GrappleHookGen.hookExists():
 		var endPoint = GrappleHookGen.getEndPointPose()

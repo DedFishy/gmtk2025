@@ -149,9 +149,6 @@ tile_set = SubResource("TileSet_eidl8")
 position = Vector2(-271, 79)
 script = ExtResource("2_eidl8")
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-ignore_rotation = false
-
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="Player"]
 sprite_frames = SubResource("SpriteFrames_eidl8")
 animation = &"swinging"
@@ -198,3 +195,7 @@ position = Vector2(-588, 11)
 rotation = 1.5708
 scale = Vector2(0.75, 0.75)
 shape = SubResource("RectangleShape2D_eg2w2")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-271, 79)
+ignore_rotation = false

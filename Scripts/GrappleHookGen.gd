@@ -74,7 +74,6 @@ func generateHook(startingNode, endingPoint):
 	add_child(startingJoint)
 	add_child(endingJoint)
 
-
 func getAverageDistenceBetweenSegments():
 	var sum = 0
 	var number = 0

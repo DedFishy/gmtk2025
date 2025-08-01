@@ -11,7 +11,7 @@ const max_horizontal_velocity = 800;
 const velocity_dampen = 5;
 
 const max_grapple_distence = 300
-const min_grapple_distence = 50
+const min_grapple_distence = 80
 const maxSwingSpeed = 800
 const angulerAccelleration = 3
 var currentAngleSpeed = 0
@@ -26,15 +26,17 @@ var walk = Array()
 @onready
 var sprite = $PlayerSprite
 var airSFX
+var camera
 
 func _ready() -> void:
 	var scene_node = get_parent()
 	scene_node.modulate.a = 1
-
+	
 	walk.append($Walk1)
 	walk.append($Walk2)
 	walk.append($Walk3)
 	airSFX = $Air
+	camera = scene_node.find_child("Camera2D")
 
 func _input(event):
 	if event.is_action_pressed("jump"):
@@ -124,6 +126,8 @@ func _physics_process(delta: float) -> void:
 		sprite.flip_h = horizontal_input < 0;
 	else:
 		sprite.play("default")
+	
+	cameraControl(delta)
 
 	if reload_scene:
 		if current_reload_scene_time < reload_scene_time:
@@ -135,6 +139,10 @@ func _physics_process(delta: float) -> void:
 			reload_scene = false
 			current_reload_scene_time = 0
 			get_tree().reload_current_scene()
+
+func cameraControl(delta):
+	camera.position = lerp(camera.position, position, 1 * delta)
+	camera.rotation = lerp_angle(camera.rotation, rotation, 5 * delta)
 
 func face_grapple():
 	look_at(GrappleHookGen.getFirstSegmentPose())

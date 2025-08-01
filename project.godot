@@ -19,6 +19,16 @@ config/icon="res://icon.svg"
 
 GrappleHookGen="*res://Scripts/GrappleHookGen.gd"
 
+[display]
+
+window/size/viewport_width=16
+window/size/viewport_height=9
+window/snap/snap_2d_vertices_to_pixel=false
+
+[global_group]
+
+WorldEdge=""
+
 [input]
 
 jump={
@@ -61,3 +71,4 @@ DeleteHook={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+2d/snap/snap_2d_vertices_to_pixel=true

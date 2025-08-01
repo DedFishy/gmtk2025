@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl54j87trtvvu"]
+
+[ext_resource type="Script" uid="uid://cvpbvq7i86hl3" path="res://Levels/AdaptSize.gd" id="1_yw2i3"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(25, 50)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_right = 250.0
+offset_bottom = 50.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_yw2i3")

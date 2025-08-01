@@ -10,20 +10,28 @@ const max_horizontal_velocity = 800;
 
 const velocity_dampen = 1;
 
-const max_grapple_distence = 500
-const min_grapple_distence = 150
+const max_grapple_distence = 300
+const min_grapple_distence = 50
 const maxSwingSpeed = 800
 const angulerAccelleration = 3
 var currentAngleSpeed = 0
 
 var hookLength = 0
 var lastSwingPose = Vector2()
+var reload_scene = false
+var reload_scene_time = .3
+var current_reload_scene_time = 0
+
+func _ready() -> void:
+	var scene_node = get_parent()
+	scene_node.modulate.a = 1
 
 func _input(event):
 	if event.is_action_pressed("jump"):
 		pass
 
 func _physics_process(delta: float) -> void:
+	check_collisions()
 	var horizontal_input = Input.get_action_strength("right") - Input.get_action_strength("left")
 	var vertical_input = -Input.get_action_strength("crouch") * crouch_power
 	var floor_normal = Vector2.UP
@@ -37,14 +45,12 @@ func _physics_process(delta: float) -> void:
 	velocity.y += gravity * delta
 	velocity.y -= vertical_input * delta
 
-	if Input.is_action_just_pressed("jump") and do_jump_raycast():
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y -= jump_power
 
 	if horizontal_input != 0:
 		var desired_velocity = floor_tangent * horizontal_input * max_horizontal_velocity
-		print(desired_velocity)
 		velocity.x = lerp(velocity.x, desired_velocity.x, .5 * delta)
-		print(velocity.x)
 	else:
 		velocity.x *= velocity_dampen * delta
 	
@@ -62,11 +68,10 @@ func _physics_process(delta: float) -> void:
 			position = endPoint + dir * ropeLength
 		
 		var angle = poseDelta.angle()
-		var direction = Vector2(cos(angle), sin(angle)).normalized()
 		var gravityForce = -sin(angle - PI/2) * gravity / ropeLength / 1.5
 		currentAngleSpeed = min(currentAngleSpeed + angulerAccelleration * delta, maxSwingSpeed / ropeLength)
 		var delta_angle = 0.0
-		var canSwing = can_swing_to(direction, 1)
+		var canSwing = not is_on_wall() and not is_on_floor() and not is_on_ceiling()
 		if canSwing:
 			delta_angle = -horizontal_input * currentAngleSpeed * delta
 		elif horizontal_input == 0:
@@ -88,6 +93,26 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	shoot_grapple()
 
+	if reload_scene:
+		if current_reload_scene_time < reload_scene_time:
+			var scene_node = get_parent()
+			current_reload_scene_time += delta
+			scene_node.modulate.a = max((reload_scene_time - current_reload_scene_time) / reload_scene_time, 0)
+		else:
+			GrappleHookGen.deleteHook()
+			reload_scene = false
+			current_reload_scene_time = 0
+			get_tree().reload_current_scene()
+		
+
+func check_collisions():
+	for i in range(0, get_slide_collision_count()):
+		var collision = get_slide_collision(i)
+		if collision:
+			var collider = collision.get_collider()
+			if collider.is_in_group("WorldEdge"):
+				reload_scene = true
+
 func do_jump_raycast() -> bool:
 	var space_state = get_world_2d().direct_space_state
 	# use global coordinates, not local to node
@@ -108,22 +133,24 @@ func shoot_grapple():
 func do_grapple_raycast():
 	var space_state = get_world_2d().direct_space_state
 	var query = PhysicsRayQueryParameters2D.new()
-	query.from = position
+	query.from = global_position
 	var mousePose = get_global_mouse_position() 
-	var delta = (mousePose - position).length()
-	query.to = mousePose
+	var delta = (mousePose - global_position)
+	var dist = delta.length()
+	var dir = delta.normalized()
+	query.to = dir * max_grapple_distence + global_position
 	query.collide_with_areas = false
 	var result = space_state.intersect_ray(query)
 	if result:
-		if delta < min_grapple_distence: 
+		if dist < min_grapple_distence or result.is_empty(): 
 			return null
 		else: 
 			return result.position
 	else:
 		return null
 
+"""
 func can_swing_to(direction: Vector2, distance: float) -> bool:
-	print("testing")
 	var test_motion = direction.normalized() * distance
 	var testSubject = CharacterBody2D.new()
 	var collider = CollisionShape2D.new()
@@ -136,3 +163,4 @@ func can_swing_to(direction: Vector2, distance: float) -> bool:
 	var collision = move_and_collide(testSubject.velocity)
 	testSubject.queue_free()
 	return collision == null
+"""

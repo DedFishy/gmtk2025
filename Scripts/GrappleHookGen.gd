@@ -28,13 +28,13 @@ func generateHook(startingNode, endingPoint):
 		segments[i].gravity_scale = .2
 		segments[i].linear_damp = 9.0
 		segments[i].angular_damp = 9.0
+
 		var timer = get_tree().create_timer(timePerSegment * i)
 		timer.timeout.connect(func():
 			if i >= 0 and i < segments.size() and is_instance_valid(segments[i]):
 				segments[i].modulate.a = 1
 		)
 
-	
 	for i in range(0, numSegments-1):
 		var joint = PinJoint2D.new()
 		joint.node_a = segments[i].get_path()

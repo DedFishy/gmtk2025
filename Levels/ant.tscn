@@ -1,10 +1,50 @@
-[gd_scene load_steps=2 format=3 uid="uid://bba4h2bajraqn"]
+[gd_scene load_steps=6 format=4 uid="uid://bba4h2bajraqn"]
+
+[ext_resource type="Texture2D" uid="uid://bhw6k3jvrdero" path="res://Assets/Textures/TouchGrass.png" id="1_tgy68"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ntloq"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tgy68"]
+friction = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j27qx"]
+texture = ExtResource("1_tgy68")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_j3ngh"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 3
+physics_layer_0/collision_mask = 3
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_tgy68")
+sources/0 = SubResource("TileSetAtlasSource_j27qx")
 
 [node name="Ant" type="Node2D"]
 
 [node name="SpawnPoint" type="Node2D" parent="."]
+position = Vector2(0, -69)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(525, 501)
@@ -12,3 +52,8 @@ position = Vector2(525, 501)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-523, -386)
 shape = SubResource("WorldBoundaryShape2D_ntloq")
+
+[node name="CollidingLayer" type="TileMapLayer" parent="."]
+position = Vector2(0, -1)
+tile_map_data = PackedByteArray("AAD6/wEAAAAAAAAAAAD7/wEAAAAAAAAAAAD8/wEAAAAAAAAAAAD9/wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAABAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAD5/wEAAAAAAAAAAAD5/wIAAAAAAAEAAAD6/wIAAAAAAAEAAAD7/wIAAAAAAAEAAAD8/wIAAAAAAAEAAAD9/wIAAAAAAAEAAAD+/wIAAAAAAAEAAAD//wIAAAAAAAEAAAAAAAIAAAAAAAEAAAABAAIAAAAAAAEAAAACAAIAAAAAAAEAAAADAAIAAAAAAAEAAAAEAAIAAAAAAAEAAAAFAAIAAAAAAAEAAAAGAAIAAAAAAAEAAAAHAAIAAAAAAAEAAAAHAAMAAAAAAAEAAAAGAAMAAAAAAAEAAAAFAAMAAAAAAAEAAAAEAAMAAAAAAAEAAAADAAMAAAAAAAEAAAACAAMAAAAAAAEAAAABAAMAAAAAAAEAAAAAAAMAAAAAAAEAAAD//wMAAAAAAAEAAAD+/wMAAAAAAAEAAAD9/wMAAAAAAAEAAAD8/wMAAAAAAAEAAAD7/wMAAAAAAAEAAAD6/wMAAAAAAAEAAAD5/wMAAAAAAAEAAAAHAAQAAAAAAAEAAAAGAAQAAAAAAAEAAAAFAAQAAAAAAAEAAAAEAAQAAAAAAAEAAAADAAQAAAAAAAEAAAACAAQAAAAAAAEAAAABAAQAAAAAAAEAAAAAAAQAAAAAAAEAAAD//wQAAAAAAAEAAAD+/wQAAAAAAAEAAAD9/wQAAAAAAAEAAAD8/wQAAAAAAAEAAAD7/wQAAAAAAAEAAAD6/wQAAAAAAAEAAAD5/wQAAAAAAAEAAAAEAAAAAAABAAEAAAAEAP//AAAAAAIAAAA=")
+tile_set = SubResource("TileSet_j3ngh")

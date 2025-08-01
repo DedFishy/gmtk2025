@@ -144,6 +144,7 @@ func check_collisions():
 		var collision = get_slide_collision(i)
 		if collision:
 			var collider = collision.get_collider()
+			if not collider: return
 			if collider.is_in_group("WorldEdge"):
 				reload_scene = true
 

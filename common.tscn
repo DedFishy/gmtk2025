@@ -129,8 +129,6 @@ size = Vector2(1051.17, 28)
 
 [node name="Common" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="level" type="Node2D" parent="."]
 
 [node name="Lab" type="Sprite2D" parent="level"]
@@ -154,6 +152,9 @@ tile_set = SubResource("TileSet_eidl8")
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(-271, 79)
 script = ExtResource("2_eidl8")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+ignore_rotation = false
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="Player"]
 sprite_frames = SubResource("SpriteFrames_eidl8")

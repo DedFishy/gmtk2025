@@ -19,10 +19,12 @@ var currentAngleSpeed = 0
 var hookLength = 0
 var lastSwingPose = Vector2()
 var reload_scene = false
-var reload_scene_time = .3
+var reload_scene_time = .1
 var current_reload_scene_time = 0
 
 var walk = Array()
+var grappleSFX
+var grappleFailSFX
 @onready
 var sprite = $PlayerSprite
 var airSFX
@@ -37,6 +39,8 @@ func _ready() -> void:
 	walk.append($Walk2)
 	walk.append($Walk3)
 	airSFX = $Air
+	grappleSFX = $GrappleSFX
+	grappleFailSFX = $GrappleFailSFX
 	camera = scene_node.find_child("Camera2D")
 	
 func refresh_scene():
@@ -139,20 +143,38 @@ func _physics_process(delta: float) -> void:
 	cameraControl(delta)
 
 	if reload_scene:
+		var scene_node_2 = get_parent()
 		if current_reload_scene_time < reload_scene_time:
-			var scene_node = get_parent()
 			current_reload_scene_time += delta
-			scene_node.modulate.a = max((reload_scene_time - current_reload_scene_time) / reload_scene_time, 0)
+			scene_node_2.modulate.a = max((reload_scene_time - current_reload_scene_time) / reload_scene_time, 0)
 		else:
 			GrappleHookGen.deleteHook()
 			reload_scene = false
 			current_reload_scene_time = 0
-			get_tree().reload_current_scene()
+			get_tree().change_scene_to_file(scene_node_2.get_path())
+			var spawnPoint = Vector2()
+			var node = CurrentLevel.get_scene()
+			if node.name != "Node2D":
+				for i in range(0, node.get_child_count()):
+					var child = node.get_child(i) 
+					if child.name == "SpawnPoint":
+						spawnPoint = child.global_position
+						break
+				print(spawnPoint)
+				global_position = spawnPoint
+				rotation = 0
+				camera.global_position = spawnPoint
+				camera.rotation = rotation
+			else:
+				get_tree().reload_current_scene()
+
+			
+					
 
 func cameraControl(delta):
 	camera.position = lerp(camera.position, position, 4 * delta)
 
-	if currentAngleSpeed > 4 or velocity.length() > 50:
+	if currentAngleSpeed > 4 or velocity.length() > 50 or velocity.length() == 0:
 		camera.rotation = lerp_angle(camera.rotation, rotation, 3 * delta)
 
 func face_grapple():
@@ -194,7 +216,10 @@ func shoot_grapple():
 		var landedPose = do_grapple_raycast()
 		if(typeof(landedPose) == TYPE_VECTOR2):
 			GrappleHookGen.generateHook(self, landedPose)
-	elif Input.is_action_just_pressed("DeleteHook"):
+			grappleSFX.play()
+		else:
+			grappleFailSFX.play()
+	if Input.is_action_just_pressed("DeleteHook"):
 		GrappleHookGen.deleteHook()
 
 func do_grapple_raycast():
@@ -216,19 +241,3 @@ func do_grapple_raycast():
 			return result.position
 	else:
 		return null
-
-"""
-func can_swing_to(direction: Vector2, distance: float) -> bool:
-	var test_motion = direction.normalized() * distance
-	var testSubject = CharacterBody2D.new()
-	var collider = CollisionShape2D.new()
-	var body = RectangleShape2D.new()
-	body.size = Vector2(32, 32)
-	collider.shape = body
-	testSubject.add_child(collider)
-	testSubject.position = position
-	testSubject.velocity = test_motion
-	var collision = move_and_collide(testSubject.velocity)
-	testSubject.queue_free()
-	return collision == null
-"""

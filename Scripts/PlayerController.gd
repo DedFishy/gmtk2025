@@ -32,8 +32,12 @@ var airSFXPosition = 0
 var camera
 var scene_node
 
+var current_level_backup = null
+
+var current_spawn_point = Vector2(0, 0);
+
 func _ready() -> void:
-	refresh_scene()
+	refresh_spawn_point()
 	
 	walk.append($Walk1)
 	walk.append($Walk2)
@@ -41,11 +45,10 @@ func _ready() -> void:
 	airSFX = $Air
 	grappleSFX = $GrappleSFX
 	grappleFailSFX = $GrappleFailSFX
-	camera = scene_node.find_child("Camera2D")
-	
-func refresh_scene():
-	scene_node = get_parent()
-	scene_node.modulate.a = 1
+	camera = get_node("/root/Common/Camera2D")
+
+func refresh_spawn_point():
+	current_spawn_point = global_position
 
 func _input(event):
 	if event.is_action_pressed("jump"):
@@ -151,23 +154,12 @@ func _physics_process(delta: float) -> void:
 			GrappleHookGen.deleteHook()
 			reload_scene = false
 			current_reload_scene_time = 0
-			get_tree().change_scene_to_file(scene_node_2.get_path())
-			var spawnPoint = Vector2()
-			var node = CurrentLevel.get_scene()
-			if node.name != "Node2D":
-				for i in range(0, node.get_child_count()):
-					var child = node.get_child(i) 
-					if child.name == "SpawnPoint":
-						spawnPoint = child.global_position
-						break
-				print(spawnPoint)
-				global_position = spawnPoint
-				rotation = 0
-				camera.global_position = spawnPoint
-				camera.rotation = rotation
-			else:
-				get_tree().reload_current_scene()
-
+			
+			global_position = current_spawn_point
+			rotation = 0
+			camera.global_position = current_spawn_point
+			camera.rotation = rotation
+			scene_node_2.modulate.a = 1
 			
 					
 

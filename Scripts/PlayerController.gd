@@ -31,7 +31,8 @@ var airSFX
 var airSFXPosition = 0
 var camera
 var scene_node
-
+@onready
+var level = get_node("/root/Common/level")
 func _ready() -> void:
 	refresh_scene()
 	

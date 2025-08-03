@@ -32,11 +32,16 @@ var airSFX
 var airSFXPosition = 0
 var camera
 var bg
+var timer_node
+var death_node
 var scene_node
 
 var current_level_backup = null
 
 var current_spawn_point = Vector2(0, 0);
+
+var start_time = 0;
+var deaths = 0;
 
 func _ready() -> void:
 	refresh_spawn_point()
@@ -50,9 +55,20 @@ func _ready() -> void:
 	deathSFX = $DeathSFX
 	camera = get_node("/root/Common/Camera2D")
 	bg = camera.get_child(0)
+	timer_node = camera.get_child(1)
+	death_node = camera.get_child(2)
+	
+	reset_stats()
 
 func refresh_spawn_point():
 	current_spawn_point = global_position
+	
+func reset_stats():
+	start_time = Time.get_ticks_msec();
+	deaths = 0;
+	
+func get_elapsed_time_msec():
+	return Time.get_ticks_msec() - start_time
 
 func _input(event):
 	if event.is_action_pressed("jump"):
@@ -148,23 +164,29 @@ func _physics_process(delta: float) -> void:
 		sprite.play("default")
 	
 	cameraControl(delta)
+	
+	timer_node.text = str(get_elapsed_time_msec()/1000) + " sec"
+	death_node.text = str(deaths) + "x deaths"
 
 	if reload_scene:
 		var scene_node_2 = get_parent()
 		if current_reload_scene_time < reload_scene_time:
+			global_position = current_spawn_point
+			rotation = 0
 			current_reload_scene_time += delta
 			scene_node_2.modulate.a = max((reload_scene_time - current_reload_scene_time) / reload_scene_time, 0)
 			if(!deathSFX.playing):
 				deathSFX.play()
 		else:
+			deaths += 1
 			GrappleHookGen.deleteHook()
 			reload_scene = false
 			current_reload_scene_time = 0
 			
-			global_position = current_spawn_point
-			rotation = 0
 			camera.global_position = current_spawn_point
+			
 			camera.rotation = rotation
+			
 			scene_node_2.modulate.a = 1
 		
 					

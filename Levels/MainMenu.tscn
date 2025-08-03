@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dmir306u1blwo"]
+[gd_scene load_steps=44 format=3 uid="uid://dmir306u1blwo"]
 
-[ext_resource type="Script" path="res://Scripts/StartGame.gd" id="1_2k6u6"]
-[ext_resource type="Script" path="res://Scripts/SFXVolumeControl.gd" id="2_65ows"]
-[ext_resource type="Script" path="res://Scripts/MusicControl.gd" id="3_2ld8x"]
+[ext_resource type="Script" uid="uid://b8cagoa14p2x3" path="res://Scripts/StartGame.gd" id="1_2k6u6"]
+[ext_resource type="LabelSettings" uid="uid://xj8svlwuoslg" path="res://Assets/Fonts/BigLabel.tres" id="1_hr4vk"]
+[ext_resource type="FontFile" uid="uid://cfkrddhom2rwm" path="res://Assets/Fonts/HomeVideo-BLG6G.ttf" id="2_2k6u6"]
+[ext_resource type="Texture2D" uid="uid://x3lo6rdpm6j1" path="res://Assets/Textures/Crystal.png" id="4_65ows"]
 
 [sub_resource type="Theme" id="Theme_2k6u6"]
 
@@ -22,26 +23,244 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hr4vk"]
 bg_color = Color(0, 0.215686, 0.364706, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2k6u6"]
 bg_color = Color(0, 0.214557, 0.365073, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_65ows"]
 bg_color = Color(0, 0.384535, 0.571868, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hr4vk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ld8x"]
+atlas = ExtResource("4_65ows")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ooo5j"]
+atlas = ExtResource("4_65ows")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gerv3"]
+atlas = ExtResource("4_65ows")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17ajd"]
+atlas = ExtResource("4_65ows")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xun1b"]
+atlas = ExtResource("4_65ows")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uty7f"]
+atlas = ExtResource("4_65ows")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdswe"]
+atlas = ExtResource("4_65ows")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_283cj"]
+atlas = ExtResource("4_65ows")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_em503"]
+atlas = ExtResource("4_65ows")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvwwd"]
+atlas = ExtResource("4_65ows")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbhuh"]
+atlas = ExtResource("4_65ows")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0awu"]
+atlas = ExtResource("4_65ows")
+region = Rect2(160, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ne6lp"]
+atlas = ExtResource("4_65ows")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yxcj"]
+atlas = ExtResource("4_65ows")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6g53u"]
+atlas = ExtResource("4_65ows")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ob000"]
+atlas = ExtResource("4_65ows")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htld4"]
+atlas = ExtResource("4_65ows")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cp151"]
+atlas = ExtResource("4_65ows")
+region = Rect2(160, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tgtfg"]
+atlas = ExtResource("4_65ows")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsmul"]
+atlas = ExtResource("4_65ows")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1c1h"]
+atlas = ExtResource("4_65ows")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwu4t"]
+atlas = ExtResource("4_65ows")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srt1h"]
+atlas = ExtResource("4_65ows")
+region = Rect2(128, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mjin"]
+atlas = ExtResource("4_65ows")
+region = Rect2(160, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v88hi"]
+atlas = ExtResource("4_65ows")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7l33"]
+atlas = ExtResource("4_65ows")
+region = Rect2(32, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3yly"]
+atlas = ExtResource("4_65ows")
+region = Rect2(64, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6nox"]
+atlas = ExtResource("4_65ows")
+region = Rect2(96, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qr1kh"]
+atlas = ExtResource("4_65ows")
+region = Rect2(128, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dn0oy"]
+atlas = ExtResource("4_65ows")
+region = Rect2(160, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13lpg"]
+atlas = ExtResource("4_65ows")
+region = Rect2(0, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sywi0"]
+atlas = ExtResource("4_65ows")
+region = Rect2(32, 160, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wdon0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ld8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ooo5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gerv3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17ajd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xun1b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uty7f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdswe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_283cj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_em503")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vvwwd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbhuh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0awu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ne6lp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3yxcj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6g53u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ob000")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htld4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cp151")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tgtfg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tsmul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1c1h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwu4t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_srt1h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mjin")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v88hi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7l33")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3yly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6nox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qr1kh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dn0oy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13lpg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sywi0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -59,22 +278,26 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -250.0
-offset_right = 250.0
-offset_bottom = 50.0
+offset_left = -125.0
+offset_right = 318.0
+offset_bottom = 160.0
 grow_horizontal = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 80
-text = "Title"
+text = "The Amethyst crystal 
+of horrible physics"
+label_settings = ExtResource("1_hr4vk")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -1
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -102.0
+offset_top = -81.0
+offset_right = -47.0
+offset_bottom = -28.0
 scale = Vector2(16.04, 12.04)
 color = Color(0.165656, 0.165656, 0.165656, 1)
 
@@ -86,137 +309,40 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -152.0
-offset_top = -95.0
-offset_right = 51.0
-offset_bottom = -40.0
+offset_left = -362.0
+offset_top = 154.0
+offset_right = 114.0
+offset_bottom = 209.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.55, 1.55)
 mouse_force_pass_scroll_events = false
 mouse_default_cursor_shape = 2
 shortcut_context = NodePath("..")
+theme_override_fonts/font = ExtResource("2_2k6u6")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxFlat_04b30")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_yw2i3")
 theme_override_styles/hover = SubResource("StyleBoxFlat_hr4vk")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2k6u6")
 theme_override_styles/normal = SubResource("StyleBoxFlat_65ows")
-text = "  PLAY!!!!!!  "
+text = "play the game"
 script = ExtResource("1_2k6u6")
 
-[node name="SFX" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -497.0
-offset_top = -626.0
-offset_right = -457.0
-offset_bottom = -586.0
-grow_horizontal = 2
-grow_vertical = 0
-scale = Vector2(1.575, 1.51)
-
-[node name="Slider" type="HSlider" parent="SFX"]
-light_mask = 1023
-visibility_layer = 1023
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 181.0
-offset_top = 309.0
-offset_right = 420.0
-offset_bottom = 335.0
-grow_horizontal = 2
-grow_vertical = 0
-scale = Vector2(1.09, 1.09)
-mouse_default_cursor_shape = 2
-theme_override_constants/grabber_offset = 0
-theme_override_icons/tick = SubResource("NoiseTexture2D_hr4vk")
-max_value = 1.0
-step = 0.001
-value = 0.5
-script = ExtResource("2_65ows")
-
-[node name="Label" type="Label" parent="SFX"]
-custom_minimum_size = Vector2(25, 50)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 53.0
-offset_top = 250.0
-offset_right = 553.0
-offset_bottom = 473.0
-grow_horizontal = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-theme_override_font_sizes/font_size = 30
-text = "SFX Volume
-"
+[node name="LOOOOOORE" type="Label" parent="."]
+offset_left = 1.0
+offset_top = 166.0
+offset_right = 638.0
+offset_bottom = 387.0
+theme_override_fonts/font = ExtResource("2_2k6u6")
+text = "So there's this scientist guy, right? And he hears this song, and one of the lyrics is \"I'm on top of the world\" or something like that. So, he says to himself, \"hmm, that guy sure does sound happy. Maybe I should be on top of the world!\" So he develops this amethyst crystal that allows him to use enery to latch onto surfaces, which he can leaverage to hoist himself upwards, across gaps, etcetera, etcetera. Pretty cool, right? Perhaps he may have taken the idea from the song a tad bit too literally..."
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
-[node name="Music" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -487.0
-offset_top = -725.0
-offset_right = -447.0
-offset_bottom = -685.0
-grow_horizontal = 2
-grow_vertical = 0
-scale = Vector2(1.525, 1.525)
-
-[node name="Slider" type="HSlider" parent="Music"]
-light_mask = 1023
-visibility_layer = 1023
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 181.0
-offset_top = 309.0
-offset_right = 420.0
-offset_bottom = 335.0
-grow_horizontal = 2
-grow_vertical = 0
-scale = Vector2(1.09, 1.09)
-mouse_default_cursor_shape = 2
-theme_override_constants/grabber_offset = 0
-theme_override_icons/tick = SubResource("NoiseTexture2D_hr4vk")
-max_value = 1.0
-step = 0.001
-value = 0.5
-script = ExtResource("3_2ld8x")
-
-[node name="Label" type="Label" parent="Music"]
-custom_minimum_size = Vector2(25, 50)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 53.0
-offset_top = 250.0
-offset_right = 553.0
-offset_bottom = 473.0
-grow_horizontal = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-theme_override_font_sizes/font_size = 30
-text = "Music Volume
-"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(114, 82)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_wdon0")
+autoplay = "default"
+frame_progress = 0.474255

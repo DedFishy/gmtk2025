@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://xj8svlwuoslg"]
+
+[ext_resource type="FontFile" uid="uid://cfkrddhom2rwm" path="res://Assets/Fonts/HomeVideo-BLG6G.ttf" id="1_qjvis"]
+
+[resource]
+font = ExtResource("1_qjvis")
+font_size = 30
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.690196)
+shadow_offset = Vector2(0, 0)

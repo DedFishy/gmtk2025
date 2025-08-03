@@ -1,11 +1,11 @@
 [gd_scene load_steps=26 format=4 uid="uid://dyuusrymeav04"]
 
 [ext_resource type="Script" uid="uid://wh6aieip2y42" path="res://Scripts/PlayerController.gd" id="2_eidl8"]
+[ext_resource type="LabelSettings" uid="uid://xj8svlwuoslg" path="res://Assets/Fonts/BigLabel.tres" id="2_pa8mu"]
 [ext_resource type="AudioStream" uid="uid://k3gnfdyf3hvk" path="res://Assets/SFX/walking1.wav" id="2_t5dku"]
 [ext_resource type="Texture2D" uid="uid://cxnim1ki8wh04" path="res://Assets/Textures/Lab Tilemap.png" id="3_fcr1k"]
 [ext_resource type="AudioStream" uid="uid://b2ovlqutqau52" path="res://Assets/SFX/walking2.wav" id="3_lim6q"]
 [ext_resource type="Script" uid="uid://txuyhiott7fk" path="res://Scripts/NextLevelTrigger.gd" id="4_eg2w2"]
-[ext_resource type="LabelSettings" uid="uid://0wo4vmrn6qwy" path="res://Assets/Fonts/Label.tres" id="4_pa8mu"]
 [ext_resource type="AudioStream" uid="uid://dq6xbuobgklvn" path="res://Assets/SFX/walking3.wav" id="4_t4i2r"]
 [ext_resource type="Texture2D" uid="uid://ug26aofir33w" path="res://Assets/Textures/Lab.png" id="5_lim6q"]
 [ext_resource type="AudioStream" uid="uid://drfeh78hdgrta" path="res://Assets/SFX/Air.wav" id="8_t4i2r"]
@@ -136,16 +136,37 @@ ignore_rotation = false
 scale = Vector2(20, 20)
 texture = ExtResource("5_lim6q")
 
+[node name="Timer" type="Label" parent="Camera2D"]
+z_index = 5
+offset_left = -313.0
+offset_top = -217.0
+offset_right = -265.0
+offset_bottom = -194.0
+text = "2000 sec"
+label_settings = ExtResource("2_pa8mu")
+
+[node name="Deaths" type="Label" parent="Camera2D"]
+z_index = 5
+layout_direction = 3
+offset_left = -316.0
+offset_top = -217.0
+offset_right = -232.0
+offset_bottom = -194.0
+text = "1 death"
+label_settings = ExtResource("2_pa8mu")
+horizontal_alignment = 2
+
 [node name="level" type="Node2D" parent="."]
 
 [node name="NextLevelTrigger" type="Node2D" parent="level"]
+position = Vector2(-13, 0)
 script = ExtResource("4_eg2w2")
 metadata/NextLevelScene = "ant"
 
 [node name="Area2D" type="Area2D" parent="level/NextLevelTrigger"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="level/NextLevelTrigger/Area2D"]
-position = Vector2(520, 47)
+position = Vector2(381, 45)
 shape = SubResource("RectangleShape2D_rnvhs")
 
 [node name="CollidingLayer" type="TileMapLayer" parent="level"]
@@ -153,32 +174,32 @@ tile_map_data = PackedByteArray("AAD2/wMAAAAAAAEAAAD3/wMAAAAAAAEAAAD4/wMAAAABAAI
 tile_set = SubResource("TileSet_eidl8")
 
 [node name="ColorRect" type="ColorRect" parent="level"]
-offset_left = -443.0
-offset_top = -69.0
-offset_right = -87.0
-offset_bottom = 6.0
-color = Color(1, 1, 1, 0.490196)
+offset_left = -498.0
+offset_top = -91.0
+offset_right = 32.0
+offset_bottom = 15.0
+color = Color(0, 0, 0, 0.705882)
 
 [node name="Tutorial" type="Label" parent="level"]
-offset_left = -439.0
-offset_top = -63.0
-offset_right = -91.0
-offset_bottom = 12.0
+offset_left = -496.0
+offset_top = -84.0
+offset_right = 26.0
+offset_bottom = 3.0
 text = "WASD to move
 Left-click to shoot grapple
 Right-click to detach grapple"
-label_settings = ExtResource("4_pa8mu")
+label_settings = ExtResource("2_pa8mu")
 horizontal_alignment = 1
 
 [node name="Exit Sign" type="Label" parent="level"]
-offset_left = -199.0
-offset_top = 15.0
-offset_right = -138.0
-offset_bottom = 90.0
+offset_left = -207.0
+offset_top = 47.0
+offset_right = -135.0
+offset_bottom = 146.0
 text = "LAB
 EXIT
-➡️"
-label_settings = ExtResource("4_pa8mu")
+->"
+label_settings = ExtResource("2_pa8mu")
 horizontal_alignment = 1
 
 [node name="Player" type="CharacterBody2D" parent="."]

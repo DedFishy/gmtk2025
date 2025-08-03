@@ -1,0 +1,141 @@
+[gd_scene load_steps=12 format=3 uid="uid://dxmekgyl0j6cc"]
+
+[ext_resource type="Script" uid="uid://vdnxny4eysev" path="res://Scripts/End.gd" id="1_egc6y"]
+[ext_resource type="LabelSettings" uid="uid://xj8svlwuoslg" path="res://Assets/Fonts/BigLabel.tres" id="2_jclhh"]
+[ext_resource type="Script" uid="uid://b8cagoa14p2x3" path="res://Scripts/StartGame.gd" id="2_lt2ag"]
+[ext_resource type="FontFile" uid="uid://cfkrddhom2rwm" path="res://Assets/Fonts/HomeVideo-BLG6G.ttf" id="3_jclhh"]
+[ext_resource type="Script" uid="uid://b0htr0huqgonv" path="res://Scripts/GoToMainMenu.gd" id="3_lt2ag"]
+[ext_resource type="LabelSettings" uid="uid://0wo4vmrn6qwy" path="res://Assets/Fonts/Label.tres" id="5_m3e5g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_75yvt"]
+bg_color = Color(0, 0.215686, 0.364706, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jclhh"]
+bg_color = Color(0, 0.215686, 0.364706, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m3e5g"]
+bg_color = Color(0, 0.215686, 0.364706, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u6pt3"]
+bg_color = Color(0, 0.214557, 0.365073, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_beduj"]
+bg_color = Color(0, 0.384535, 0.571868, 1)
+
+[node name="End" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_egc6y")
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(25, 50)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 635.0
+offset_bottom = 113.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 80
+text = "You've reached the end of the game!"
+label_settings = ExtResource("2_jclhh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+offset_left = -121.0
+offset_top = -92.0
+offset_right = -66.0
+offset_bottom = -35.0
+scale = Vector2(16.04, 12.04)
+color = Color(0.165656, 0.165656, 0.165656, 1)
+
+[node name="Button" type="Button" parent="." node_paths=PackedStringArray("shortcut_context")]
+visibility_layer = 1023
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 14.0
+offset_top = 404.0
+offset_right = 278.0
+offset_bottom = 459.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_force_pass_scroll_events = false
+mouse_default_cursor_shape = 2
+shortcut_context = NodePath("")
+theme_override_fonts/font = ExtResource("3_jclhh")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxFlat_75yvt")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_jclhh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_m3e5g")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_u6pt3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_beduj")
+text = "Play Again"
+script = ExtResource("2_lt2ag")
+
+[node name="Stats" type="Label" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 93.0
+offset_right = 639.0
+offset_bottom = 364.0
+text = "Yadda yadda yadda
+Yadda yadda yadda
+Yadda yadda yadda
+Yadda yadda yadda
+Yadda yadda yadda
+Yadda yadda yadda
+Yadda yadda yadda
+Yadda yadda yadda
+Yadda yadda yadda"
+label_settings = ExtResource("5_m3e5g")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button2" type="Button" parent="." node_paths=PackedStringArray("shortcut_context")]
+visibility_layer = 1023
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 383.0
+offset_top = 403.0
+offset_right = 623.0
+offset_bottom = 458.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_force_pass_scroll_events = false
+mouse_default_cursor_shape = 2
+shortcut_context = NodePath("")
+theme_override_fonts/font = ExtResource("3_jclhh")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxFlat_75yvt")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_jclhh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_m3e5g")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_u6pt3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_beduj")
+text = "Main menu"
+script = ExtResource("3_lt2ag")

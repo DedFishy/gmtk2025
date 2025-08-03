@@ -19,6 +19,11 @@ func _physics_process(delta: float) -> void:
 	if player_in_trigger:
 		var next_scene_name = get_meta("NextLevelScene")
 		if next_scene_name:
+			if next_scene_name == "end": 
+				print("END")
+				SaveDataManager.store_game(player.get_elapsed_time_msec(), player.deaths)
+				get_tree().change_scene_to_file("res://end.tscn")
+				return
 			background.texture = load("res://Assets/Textures/Bg/" + next_scene_name + ".png")
 			var scene = load("res://Levels/" + next_scene_name + ".tscn")
 			for child in level.get_children():

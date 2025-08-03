@@ -31,6 +31,7 @@ var sprite = $PlayerSprite
 var airSFX
 var airSFXPosition = 0
 var camera
+var bg
 var scene_node
 
 var current_level_backup = null
@@ -48,6 +49,7 @@ func _ready() -> void:
 	grappleFailSFX = $GrappleFailSFX
 	deathSFX = $DeathSFX
 	camera = get_node("/root/Common/Camera2D")
+	bg = camera.get_child(0)
 
 func refresh_spawn_point():
 	current_spawn_point = global_position
@@ -172,6 +174,7 @@ func cameraControl(delta):
 
 	if currentAngleSpeed > 4 or velocity.length() > 50 or velocity.length() == 0:
 		camera.rotation = lerp_angle(camera.rotation, rotation, 3 * delta)
+		bg.rotation = -camera.rotation
 
 func face_grapple():
 	var delta = get_physics_process_delta_time()

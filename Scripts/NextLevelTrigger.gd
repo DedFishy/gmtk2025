@@ -4,16 +4,22 @@ extends Node2D
 var area2d = $Area2D
 var player
 var level
+var camera
+var background
 
 func _ready() -> void:
 	player = get_node("/root/Common/Player")
 	level = get_node("/root/Common/level")
+	camera = get_node("/root/Common/Camera2D")
+	background = camera.get_child(0)
+	
 
 func _physics_process(delta: float) -> void:
 	var player_in_trigger = player in area2d.get_overlapping_bodies()
 	if player_in_trigger:
 		var next_scene_name = get_meta("NextLevelScene")
 		if next_scene_name:
+			background.texture = load("res://Assets/Textures/Bg/" + next_scene_name + ".png")
 			var scene = load("res://Levels/" + next_scene_name + ".tscn")
 			for child in level.get_children():
 				level.remove_child(child)

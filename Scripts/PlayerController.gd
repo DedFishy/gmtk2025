@@ -234,7 +234,7 @@ func do_grapple_raycast():
 	query.collide_with_areas = false
 	var result = space_state.intersect_ray(query)
 	if result:
-		if dist < min_grapple_distence or result.is_empty(): 
+		if dist < min_grapple_distence or result.is_empty() or result.position.y > position.y: 
 			return null
 		else: 
 			return result.position

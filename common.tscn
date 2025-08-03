@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://dyuusrymeav04"]
+[gd_scene load_steps=25 format=4 uid="uid://dyuusrymeav04"]
 
 [ext_resource type="Script" uid="uid://wh6aieip2y42" path="res://Scripts/PlayerController.gd" id="2_eidl8"]
 [ext_resource type="AudioStream" uid="uid://k3gnfdyf3hvk" path="res://Assets/SFX/walking1.wav" id="2_t5dku"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://drfeh78hdgrta" path="res://Assets/SFX/Air.wav" id="8_t4i2r"]
 [ext_resource type="AudioStream" uid="uid://dnldmp0pok18v" path="res://Assets/SFX/grappleSound.wav" id="9_rsfwj"]
 [ext_resource type="AudioStream" uid="uid://4itaxok11o1h" path="res://Assets/SFX/GrappleFailSound.wav" id="10_kpt8x"]
+[ext_resource type="AudioStream" uid="uid://3tr0qjdqp4ce" path="res://Assets/SFX/Death.wav" id="11_8x1rv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rnvhs"]
 size = Vector2(37, 136)
@@ -182,6 +183,9 @@ volume_db = -18.59
 [node name="GrappleFailSFX" type="AudioStreamPlayer2D" parent="Player"]
 position = Vector2(-112, 67.7987)
 stream = ExtResource("10_kpt8x")
+
+[node name="DeathSFX" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource("11_8x1rv")
 
 [node name="WorldEdge" type="StaticBody2D" parent="." groups=["WorldEdge"]]
 

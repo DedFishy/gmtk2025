@@ -25,6 +25,7 @@ var current_reload_scene_time = 0
 var walk = Array()
 var grappleSFX
 var grappleFailSFX
+var deathSFX
 @onready
 var sprite = $PlayerSprite
 var airSFX
@@ -45,6 +46,7 @@ func _ready() -> void:
 	airSFX = $Air
 	grappleSFX = $GrappleSFX
 	grappleFailSFX = $GrappleFailSFX
+	deathSFX = $DeathSFX
 	camera = get_node("/root/Common/Camera2D")
 
 func refresh_spawn_point():
@@ -150,6 +152,7 @@ func _physics_process(delta: float) -> void:
 		if current_reload_scene_time < reload_scene_time:
 			current_reload_scene_time += delta
 			scene_node_2.modulate.a = max((reload_scene_time - current_reload_scene_time) / reload_scene_time, 0)
+			deathSFX.play()
 		else:
 			GrappleHookGen.deleteHook()
 			reload_scene = false
@@ -160,7 +163,7 @@ func _physics_process(delta: float) -> void:
 			camera.global_position = current_spawn_point
 			camera.rotation = rotation
 			scene_node_2.modulate.a = 1
-			
+		
 					
 
 func cameraControl(delta):

@@ -154,7 +154,7 @@ func _physics_process(delta: float) -> void:
 			get_tree().change_scene_to_file(scene_node_2.get_path())
 			var spawnPoint = Vector2()
 			var node = CurrentLevel.get_scene()
-			if node.name != "Node2D":
+			if node.name != "":
 				for i in range(0, node.get_child_count()):
 					var child = node.get_child(i) 
 					if child.name == "SpawnPoint":

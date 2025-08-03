@@ -6,5 +6,4 @@ func get_scene():
 		return current_level_node
 	else:
 		var node = Node2D.new()
-		node.name = "Commen"
 		return node

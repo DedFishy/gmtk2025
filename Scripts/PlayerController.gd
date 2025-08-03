@@ -152,7 +152,8 @@ func _physics_process(delta: float) -> void:
 		if current_reload_scene_time < reload_scene_time:
 			current_reload_scene_time += delta
 			scene_node_2.modulate.a = max((reload_scene_time - current_reload_scene_time) / reload_scene_time, 0)
-			deathSFX.play()
+			if(!deathSFX.playing):
+				deathSFX.play()
 		else:
 			GrappleHookGen.deleteHook()
 			reload_scene = false
